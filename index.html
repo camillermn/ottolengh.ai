@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ottolengh.ai — Votre oracle culinaire</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --cream:#F5EFE4;--warm-white:#FDFAF5;--terracotta:#C4603A;
+    --terracotta-light:#E8A98A;--terracotta-pale:#F5E8E0;
+    --olive:#6B7A3E;--olive-light:#A8B87A;--olive-pale:#EEF2E2;
+    --saffron:#D4891A;--saffron-pale:#FBF0D8;
+    --deep:#2C2318;--mid:#6B5E4C;--muted:#A09080;
+    --border:rgba(108,90,65,0.15);--border-med:rgba(108,90,65,0.3);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--deep);min-height:100vh;line-height:1.6;}
+
+  /* HEADER */
+  header{background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;letter-spacing:-0.02em;color:var(--deep);}
+  .logo span{color:var(--terracotta);font-style:italic;}
+  nav{display:flex;gap:0.25rem;}
+  nav button{font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;letter-spacing:0.07em;text-transform:uppercase;padding:0.4rem 0.9rem;border:1px solid transparent;border-radius:2rem;background:none;color:var(--mid);cursor:pointer;transition:all 0.2s;}
+  nav button:hover{background:var(--terracotta-pale);color:var(--terracotta);}
+  nav button.active{background:var(--terracotta);color:white;border-color:var(--terracotta);}
+
+  /* HERO BAND */
+  
+  
+  
+  
+  
+
+  /* HERO BAND VARIANTS */
+  
+  
+
+  main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem;}
+  .section{display:none;}.section.active{display:block;}
+
+  /* PHOTO GRID for books section intro */
+  
+  
+  
+  
+  
+  
+
+  /* BOOKS */
+  .section-lead{margin-bottom:2rem;}
+  .section-lead h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--deep);margin-bottom:0.3rem;}
+  .section-lead p{font-size:0.88rem;color:var(--muted);font-weight:300;}
+
+  .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;}
+  .book-card{background:var(--warm-white);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1rem;cursor:pointer;transition:all 0.25s;position:relative;display:flex;flex-direction:column;gap:0.3rem;}
+  .book-card:hover{border-color:var(--terracotta-light);transform:translateY(-2px);box-shadow:0 4px 16px rgba(196,96,58,0.1);}
+  .book-card.selected{border-color:var(--terracotta);background:var(--terracotta-pale);}
+  .book-card .spine{width:5px;height:52px;border-radius:2px;margin-bottom:0.4rem;}
+  .book-card h3{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:500;line-height:1.2;color:var(--deep);}
+  .book-card .year{font-size:0.72rem;color:var(--muted);font-weight:300;}
+  .book-card .badge{font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--olive);background:var(--olive-pale);border-radius:2rem;padding:0.12rem 0.45rem;width:fit-content;margin-top:0.2rem;}
+  .book-card .check{position:absolute;top:0.7rem;right:0.7rem;width:17px;height:17px;border-radius:50%;border:1.5px solid var(--border-med);display:flex;align-items:center;justify-content:center;font-size:9px;transition:all 0.2s;color:transparent;}
+  .book-card.selected .check{background:var(--terracotta);border-color:var(--terracotta);color:white;}
+  .books-count{font-size:0.85rem;color:var(--mid);margin-top:1.25rem;padding:0.75rem 1rem;background:var(--warm-white);border:1px solid var(--border);border-radius:4px;}
+  .books-count strong{color:var(--terracotta);}
+
+  /* SEARCH */
+  .search-box{display:flex;gap:0.75rem;margin-bottom:1.25rem;}
+  .search-box input{flex:1;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:300;padding:0.75rem 1rem;border:1px solid var(--border-med);border-radius:4px;background:var(--warm-white);color:var(--deep);outline:none;transition:border-color 0.2s;}
+  .search-box input:focus{border-color:var(--terracotta);box-shadow:0 0 0 3px rgba(196,96,58,0.08);}
+  .search-box input::placeholder{color:var(--muted);}
+  .btn{font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:400;padding:0.75rem 1.25rem;border-radius:4px;border:none;cursor:pointer;transition:all 0.2s;}
+  .btn-primary{background:var(--terracotta);color:white;}.btn-primary:hover{background:#A8502F;}
+  .btn-secondary{background:var(--olive-pale);color:var(--olive);border:1px solid var(--olive-light);}.btn-secondary:hover{background:var(--olive-light);color:white;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem;min-height:1px;}
+  .tag{display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:2rem;background:var(--saffron-pale);color:var(--saffron);border:1px solid rgba(212,137,26,0.25);}
+  .tag button{background:none;border:none;cursor:pointer;color:var(--saffron);font-size:1rem;line-height:1;padding:0;opacity:0.6;}
+  .tag button:hover{opacity:1;}
+  .results-meta{font-size:0.8rem;color:var(--muted);margin-bottom:1rem;}
+  .results-meta strong{color:var(--mid);}
+
+  /* MODE TOGGLE */
+  .mode-toggle{display:flex;gap:0.35rem;margin-bottom:1.25rem;}
+  .mode-btn{font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;letter-spacing:0.05em;padding:0.35rem 0.85rem;border-radius:2rem;border:1px solid var(--border-med);background:none;color:var(--mid);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem;}
+  .mode-btn:hover{background:var(--terracotta-pale);color:var(--terracotta);border-color:var(--terracotta-light);}
+  .mode-btn.active{background:var(--deep);color:white;border-color:var(--deep);}
+
+  /* SWIPE MODE */
+  .swipe-arena{position:relative;height:340px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
+  .swipe-card{
+    position:absolute;
+    width:min(340px,90vw);
+    background:var(--warm-white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:2rem 1.75rem;
+    cursor:grab;
+    user-select:none;
+    transition:box-shadow 0.2s;
+    box-shadow:0 4px 24px rgba(44,35,24,0.08);
+    will-change:transform;
+  }
+  .swipe-card:active{cursor:grabbing;}
+  .swipe-card.is-dragging{box-shadow:0 12px 40px rgba(44,35,24,0.18);transition:none;}
+  .swipe-card.swipe-left{animation:flyLeft 0.35s ease-in forwards;}
+  .swipe-card.swipe-right{animation:flyRight 0.35s ease-in forwards;}
+  .swipe-card .swipe-verdict{
+    position:absolute;top:1.2rem;left:1.4rem;
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;
+    opacity:0;transition:opacity 0.1s;border-radius:4px;padding:0.1rem 0.5rem;
+    border:2px solid;
+  }
+  .swipe-card .swipe-verdict.yes{color:#5A8C5A;border-color:#5A8C5A;transform:rotate(-8deg);}
+  .swipe-card .swipe-verdict.no{color:#C4603A;border-color:#C4603A;transform:rotate(8deg);}
+  .swipe-card h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;line-height:1.2;color:var(--deep);margin-bottom:1rem;}
+  .swipe-card .swipe-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:1.5rem;}
+  .swipe-card .swipe-book{font-size:0.75rem;color:var(--muted);}
+  .swipe-card .swipe-page{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--terracotta);line-height:1;}
+  .swipe-card .swipe-page small{display:block;font-family:'DM Sans',sans-serif;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:1px;}
+  .swipe-card .swipe-dots{display:flex;gap:4px;margin-top:1rem;}
+  .swipe-card .swipe-dot{width:6px;height:6px;border-radius:50%;background:var(--border-med);}
+  .swipe-card .swipe-dot.lit{background:var(--olive);}
+  .swipe-stack-hint{font-size:0.8rem;color:var(--muted);text-align:center;margin-bottom:0.5rem;font-style:italic;}
+  .swipe-buttons{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;}
+  .swipe-btn{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--border-med);background:var(--warm-white);cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;box-shadow:0 2px 8px rgba(44,35,24,0.08);}
+  .swipe-btn.no:hover{border-color:var(--terracotta);background:var(--terracotta-pale);color:var(--terracotta);}
+  .swipe-btn.yes:hover{border-color:var(--olive);background:var(--olive-pale);color:var(--olive);}
+  .swipe-btn.fav:hover{border-color:var(--terracotta);background:var(--terracotta-pale);}
+  .swipe-counter{text-align:center;font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;}
+  .swipe-done{text-align:center;padding:2.5rem 1rem;}
+  .swipe-done .icon{font-size:2rem;margin-bottom:0.75rem;}
+  .swipe-done h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--deep);margin-bottom:0.5rem;}
+  .swipe-done p{font-size:0.85rem;color:var(--muted);}
+  .swipe-yes-list{margin-top:1.5rem;}
+  @keyframes flyLeft{0%{transform:translateX(0) rotate(0);}100%{transform:translateX(-120vw) rotate(-20deg);opacity:0;}}
+  @keyframes flyRight{0%{transform:translateX(0) rotate(0);}100%{transform:translateX(120vw) rotate(20deg);opacity:0;}}
+  .recipe-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .recipe-card{background:var(--warm-white);border:1px solid var(--border);border-radius:4px;padding:0.9rem 1.1rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;transition:all 0.2s;}
+  .recipe-card:hover{border-color:var(--border-med);background:#FEFCF8;}
+  .recipe-card.is-fav{border-left:3px solid var(--terracotta);padding-left:0.9rem;background:var(--terracotta-pale);}
+  .recipe-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--deep);margin-bottom:0.2rem;line-height:1.3;}
+  .recipe-card .meta{font-size:0.75rem;color:var(--muted);display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.2rem;}
+  .recipe-card .page-badge{flex-shrink:0;text-align:right;white-space:nowrap;line-height:1.4;}
+  .recipe-card .page-badge .book-name{display:block;font-family:'DM Sans',sans-serif;font-size:0.66rem;color:var(--muted);letter-spacing:0.03em;text-align:right;margin-bottom:4px;font-weight:400;}
+  .recipe-card .page-badge .page-num{display:block;font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--terracotta);line-height:1.2;}
+  .recipe-card .page-badge .page-label{display:block;font-family:'DM Sans',sans-serif;font-size:0.62rem;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;text-align:right;margin-top:2px;}
+  .recipe-card .fav-btn{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:0;flex-shrink:0;opacity:0.3;transition:all 0.2s;line-height:1;margin-top:2px;}
+  .recipe-card .fav-btn:hover{opacity:0.8;transform:scale(1.2);}
+  .recipe-card .fav-btn.active{opacity:1;color:var(--terracotta);}
+  .fav-badge{font-size:0.64rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--terracotta);background:rgba(196,96,58,0.12);border-radius:2rem;padding:0.12rem 0.45rem;width:fit-content;margin-top:0.25rem;}
+  .match-dots{display:flex;gap:3px;margin-top:0.4rem;align-items:center;}
+  .match-dot{width:5px;height:5px;border-radius:50%;background:var(--border-med);flex-shrink:0;}
+  .match-dot.lit{background:var(--olive);}
+  .match-label{font-size:0.68rem;color:var(--muted);margin-left:4px;}
+  .suggest-section{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+  .suggest-section h2{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--mid);margin-bottom:0.75rem;font-style:italic;}
+  .suggest-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .suggest-chip{font-size:0.78rem;padding:0.3rem 0.7rem;border-radius:2rem;border:1px dashed var(--border-med);background:none;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+  .suggest-chip:hover{border-style:solid;border-color:var(--saffron);color:var(--saffron);background:var(--saffron-pale);}
+
+  /* FRIDGE */
+  .upload-area{border:1.5px dashed var(--border-med);border-radius:8px;padding:2.5rem 2rem;text-align:center;background:var(--warm-white);cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+  .upload-area:hover{border-color:var(--terracotta-light);background:var(--terracotta-pale);}
+  .upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0;}
+  .upload-icon{width:48px;height:48px;margin:0 auto 1rem;background:var(--terracotta-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+  .upload-area h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--deep);margin-bottom:0.4rem;}
+  .upload-area p{font-size:0.84rem;color:var(--muted);}
+  #preview-img{max-width:100%;max-height:260px;border-radius:4px;margin:1rem auto 0;display:none;object-fit:cover;}
+  .loading{display:flex;align-items:center;gap:0.75rem;padding:1.5rem 0;color:var(--muted);font-size:0.9rem;font-weight:300;}
+  .spinner{width:18px;height:18px;border:1.5px solid var(--border-med);border-top-color:var(--terracotta);border-radius:50%;animation:spin 0.8s linear infinite;flex-shrink:0;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);}
+  .empty-state .icon{font-size:2rem;margin-bottom:0.75rem;}
+  .empty-state p{font-size:0.9rem;line-height:1.7;}
+  .vege-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin:0.75rem 0 1.5rem;}
+  .vege-tag{font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:2rem;background:var(--olive-pale);color:var(--olive);border:1px solid rgba(107,122,62,0.22);}
+  .divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;color:var(--muted);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;}
+  .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+  .info-note{margin-top:1.5rem;padding:1rem 1.25rem;background:var(--saffron-pale);border:1px solid rgba(212,137,26,0.18);border-radius:4px;font-size:0.8rem;color:var(--mid);line-height:1.6;}
+  .info-note strong{color:var(--saffron);}
+  @media(max-width:640px){
+    header{padding:0 1rem;}
+    nav button{padding:0.3rem 0.55rem;font-size:0.7rem;}
+    main{padding:1.5rem 1rem;}
+    
+    
+    
+  }
+
+  .section-hero{margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+  .section-hero h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;line-height:1.1;color:var(--deep);}
+  .section-hero p{font-size:0.9rem;color:var(--muted);font-weight:300;margin-top:0.4rem;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ottolengh<span>.ai</span></div>
+  <nav>
+    <button class="active" onclick="showSection('books',this)">Ma bibliothèque</button>
+    <button onclick="showSection('search',this)">Recherche</button>
+    <button onclick="showSection('fridge',this)">Mon frigo</button>
+  </nav>
+</header>
+<main>
+  <section id="books" class="section active">
+    <div class="section-hero"><h1>Ma bibliothèque</h1><p>Sélectionnez les livres que vous possédez</p></div>
+    
+    <div class="books-grid" id="books-grid"></div>
+    <p class="books-count" id="books-count"></p>
+  </section>
+  <section id="search" class="section">
+    <div class="section-hero"><h1>Trouver une recette</h1><p>Recherchez par ingrédient dans vos livres</p></div>
+    <div class="search-box">
+      <input type="text" id="ingredient-input" placeholder="aubergine, grenade, tahin…" autocomplete="off" onkeydown="if(event.key==='Enter') addIngredient()"/>
+      <button class="btn btn-primary" onclick="addIngredient()">Ajouter</button>
+      <button class="btn btn-secondary" onclick="searchRecipes()">Chercher</button>
+    </div>
+    <div class="tag-list" id="ingredient-tags"></div>
+    <div id="results-area"></div>
+    <div class="mode-toggle" id="mode-toggle" style="display:none">
+      <button class="mode-btn active" id="btn-list" onclick="setMode('list')">☰ Liste</button>
+      <button class="mode-btn" id="btn-swipe" onclick="setMode('swipe')">↔ Swipe</button>
+    </div>
+    <div id="mode-content"></div>
+    <div class="suggest-section" id="suggest-section" style="display:none">
+      <h2>Essayez d'ajouter…</h2>
+      <div class="suggest-chips" id="suggest-chips"></div>
+    </div>
+  </section>
+  <section id="fridge" class="section">
+    <div class="section-hero"><h1>Scan du frigo</h1><p>Photographiez — l'IA identifie et suggère des recettes</p></div>
+    <div class="upload-area">
+      <input type="file" id="fridge-photo" accept="image/*" onchange="handleFridgePhoto(event)"/>
+      <div class="upload-icon">📷</div>
+      <h3>Importez une photo du frigo</h3>
+      <p>JPEG ou PNG — l'IA identifiera vos légumes et fruits</p>
+      <img id="preview-img" alt="Aperçu"/>
+    </div>
+    <div id="fridge-results"></div>
+  </section>
+</main>
+<script>
+const BOOKS=[
+  {id:'ottolenghi',title:'Ottolenghi',subtitle:'Le livre de cuisine',year:2008,color:'#C4603A',indexed:false},
+  {id:'plenty',title:'Plenty',subtitle:'Légumes vibrants',year:2010,color:'#6B7A3E',indexed:false},
+  {id:'jerusalem',title:'Jerusalem',subtitle:'Un livre de cuisine',year:2012,color:'#D4891A',indexed:false},
+  {id:'plenty_more',title:'Plenty More',subtitle:'Encore plus de légumes',year:2014,color:'#7B5EA7',indexed:true},
+  {id:'nopi',title:'NOPI',subtitle:'Le livre de cuisine',year:2015,color:'#3A7A8C',indexed:false},
+  {id:'sweet',title:'Sweet',subtitle:'Desserts',year:2017,color:'#C45A8C',indexed:false},
+  {id:'simple',title:'Simple',subtitle:'Un livre de cuisine',year:2018,color:'#5A8C5A',indexed:true},
+  {id:'flavour',title:'Flavour',subtitle:'Recettes végétales',year:2020,color:'#8C6A3A',indexed:true},
+  {id:'shelf_love',title:'OTK: Shelf Love',subtitle:'Secrets du placard',year:2021,color:'#3A5A8C',indexed:true},
+  {id:'extra_good_things',title:'Extra Good Things',subtitle:'Saveurs audacieuses',year:2022,color:'#8C3A5A',indexed:false},
+  {id:'comfort',title:'Comfort',subtitle:'Réconfort en cuisine',year:2024,color:'#7A4E3A',indexed:true},
+];
+
+const RECIPES=[
+  // ===================== SIMPLE =====================
+  {name:"Tartines au beurre d'avocat et tomates en sauce vierge",book:"simple",page:14,ingredients:["avocat","tomate","sauce vierge"]},
+  {name:"Toasts briochés, champignons et œufs pochés",book:"simple",page:10,ingredients:["champignons","œufs","brioche"]},
+  {name:"Omelettes à la harissa et au manchego",book:"simple",page:7,ingredients:["œufs","harissa","manchego"]},
+  {name:"Œufs braisés aux poireaux et au zaatar",book:"simple",page:6,ingredients:["œufs","poireaux","zaatar"]},
+  {name:"Frittata moelleuse aux courgettes",book:"simple",page:9,ingredients:["courgettes","œufs"]},
+  {name:"Brouillade de tofu à la harissa",book:"simple",page:13,ingredients:["tofu","harissa"]},
+  {name:"Pain de maïs au fromage et au piment",book:"simple",page:19,ingredients:["maïs","fromage","piment"]},
+  {name:"Galettes iraniennes aux herbes",book:"simple",page:22,ingredients:["herbes","œufs"]},
+  {name:"Croquettes aux petits pois, à la feta et au zaatar",book:"simple",page:20,ingredients:["petits pois","feta","zaatar"]},
+  {name:"Soupe froide de concombre, chou-fleur et gingembre",book:"simple",page:26,ingredients:["concombre","chou-fleur","gingembre"]},
+  {name:"Raita de tomates et de concombres",book:"simple",page:30,ingredients:["tomates","concombre","yaourt"]},
+  {name:"Tagliatelles de courgettes au thym et aux noix",book:"simple",page:31,ingredients:["courgettes","noix","thym"]},
+  {name:"Salade de tomates aux anchois et aux câpres",book:"simple",page:33,ingredients:["tomates","anchois","câpres"]},
+  {name:"Méli-mélo de tomates, échalion au sumac et pignons",book:"simple",page:34,ingredients:["tomates","échalotes","sumac","pignons"]},
+  {name:"Salade fraîcheur au tahin et au zaatar",book:"simple",page:36,ingredients:["tahin","zaatar"]},
+  {name:"Salade verte, sauce fourre-tout",book:"simple",page:37,ingredients:["salade","herbes"]},
+  {name:"Salade de mâche et de concombre",book:"simple",page:38,ingredients:["mâche","concombre"]},
+  {name:"Salade de pastèque, granny smith et citron vert",book:"simple",page:40,ingredients:["pastèque","pomme","citron vert"]},
+  {name:"Cresson et radicchio aux pêches, framboises et cinq épices",book:"simple",page:41,ingredients:["cresson","radicchio","pêches","framboises"]},
+  {name:"Burrata au basilic, brochettes de raisin grillé",book:"simple",page:43,ingredients:["burrata","basilic","raisin"]},
+  {name:"Taboulé de chou-fleur",book:"simple",page:46,ingredients:["chou-fleur","herbes","citron"]},
+  {name:"Salade aux cébettes et aux herbes",book:"simple",page:47,ingredients:["cébettes","herbes"]},
+  {name:"Soupe de lentilles corail au curry, tomates et lait de coco",book:"simple",page:52,ingredients:["lentilles","tomates","lait de coco","curry"]},
+  {name:"Velouté de courgettes, petits pois et basilic",book:"simple",page:53,ingredients:["courgettes","petits pois","basilic"]},
+  {name:"Soupe de citrouille au safran et à l'orange",book:"simple",page:54,ingredients:["citrouille","safran","orange"]},
+  {name:"Courgettes à l'étuvée, ail et origan",book:"simple",page:56,ingredients:["courgettes","ail","origan"]},
+  {name:"Écrasé de courgettes à l'ail et aux herbes",book:"simple",page:57,ingredients:["courgettes","ail","herbes"]},
+  {name:"Courgettes farcies, sauce aux pignons",book:"simple",page:60,ingredients:["courgettes","pignons"]},
+  {name:"Courgettes aux herbes, semoule au lait",book:"simple",page:63,ingredients:["courgettes","herbes","semoule"]},
+  {name:"Aubergines rôties, sauce curry au yaourt",book:"simple",page:66,ingredients:["aubergines","yaourt","curry"]},
+  {name:"Chaud-froid de tomates cerise au yaourt citronné",book:"simple",page:70,ingredients:["tomates","yaourt","citron"]},
+  {name:"Tomates, bettes et épinards aux amandes",book:"simple",page:72,ingredients:["tomates","blettes","épinards","amandes"]},
+  {name:"Poêlée de brocoli et kale à l'ail, cumin et citron vert",book:"simple",page:75,ingredients:["brocoli","kale","ail","cumin","citron vert"]},
+  {name:"Rapini à la sauce soja, ail et cacahuètes",book:"simple",page:76,ingredients:["rapini","soja","ail","cacahuètes"]},
+  {name:"Chou rôti à l'estragon et au pecorino",book:"simple",page:80,ingredients:["chou","estragon","pecorino"]},
+  {name:"Kale mariné à la moutarde, asperges et fèves",book:"simple",page:81,ingredients:["kale","moutarde","asperges","fèves"]},
+  {name:"Gombos express, sauce aigre-douce",book:"simple",page:86,ingredients:["gombos"]},
+  {name:"Wok de Garry : chou sauté à l'ail et au piment",book:"simple",page:87,ingredients:["chou","ail","piment"]},
+  {name:"Gratin de chou-fleur à la moutarde",book:"simple",page:92,ingredients:["chou-fleur","moutarde"]},
+  {name:"Cru-cuit de chou-fleur, grenade et pistaches",book:"simple",page:91,ingredients:["chou-fleur","grenade","pistaches"]},
+  {name:"Chou-fleur rôti entier",book:"simple",page:94,ingredients:["chou-fleur"]},
+  {name:"Salade de chou-fleur et d'œufs à la reine",book:"simple",page:98,ingredients:["chou-fleur","œufs"]},
+  {name:"Pois chiches et feuilles de bette au yaourt",book:"simple",page:100,ingredients:["pois chiches","blettes","yaourt"]},
+  {name:"Mijoté de haricots plats à la tomate",book:"simple",page:101,ingredients:["haricots","tomates"]},
+  {name:"Haricots verts et tofu en sauce rouge",book:"simple",page:104,ingredients:["haricots verts","tofu"]},
+  {name:"Guacamole revisité aux saveurs printanières",book:"simple",page:106,ingredients:["avocat","fèves","petits pois"]},
+  {name:"Muhammara",book:"simple",page:107,ingredients:["poivron","noix","épices"]},
+  {name:"Salade de haricots verts aux deux citrons",book:"simple",page:111,ingredients:["haricots verts","citron","citron confit"]},
+  {name:"Châtaignes et champignons au zaatar",book:"simple",page:112,ingredients:["châtaignes","champignons","zaatar"]},
+  {name:"Choux de Bruxelles au beurre noisette et à l'ail noir",book:"simple",page:113,ingredients:["choux de Bruxelles","beurre noisette","ail noir"]},
+  {name:"Carottes nouvelles rôties à la harissa et à la grenade",book:"simple",page:116,ingredients:["carottes","harissa","grenade"]},
+  {name:"Salade de carottes à la cannelle, sauce au yaourt et aux herbes",book:"simple",page:118,ingredients:["carottes","cannelle","yaourt","herbes"]},
+  {name:"Butternut rôtie aux lentilles et au gorgonzola",book:"simple",page:119,ingredients:["butternut","lentilles","gorgonzola"]},
+  {name:"Butternut rôtie avec maïs, feta et graines de courge",book:"simple",page:122,ingredients:["butternut","maïs","feta","graines de courge"]},
+  {name:"Salade de betteraves rôties au yaourt et citron confit",book:"simple",page:125,ingredients:["betteraves","yaourt","citron confit"]},
+  {name:"Purée de patate douce, sauce aux herbes et au citron vert",book:"simple",page:131,ingredients:["patate douce","herbes","citron vert"]},
+  {name:"Pommes de terre en robe des champs, gorgonzola et épinards",book:"simple",page:134,ingredients:["pommes de terre","gorgonzola","épinards"]},
+  {name:"Pommes de terre en robe des champs, œufs et sauce au thon",book:"simple",page:136,ingredients:["pommes de terre","œufs","thon"]},
+  {name:"Frites au four à la feta et à l'origan",book:"simple",page:138,ingredients:["pommes de terre","feta","origan"]},
+  {name:"Pommes sautées au romarin et au sumac",book:"simple",page:139,ingredients:["pommes de terre","romarin","sumac"]},
+  {name:"Pommes de terre à la harissa et à l'ail confit au four",book:"simple",page:142,ingredients:["pommes de terre","harissa","ail"]},
+  {name:"Salade croquante, laitue et robe des champs",book:"simple",page:146,ingredients:["pommes de terre","salade"]},
+  {name:"Pommes de terre nouvelles et petits pois à la coriandre",book:"simple",page:147,ingredients:["pommes de terre","petits pois","coriandre"]},
+  {name:"Pizza aux pommes de terre, anchois et sauge",book:"simple",page:150,ingredients:["pommes de terre","anchois","sauge"]},
+  {name:"Salade de haricots verts au sarrasin",book:"simple",page:157,ingredients:["haricots verts","sarrasin"]},
+  {name:"Taboulé à ma façon",book:"simple",page:158,ingredients:["semoule","herbes","tomates"]},
+  {name:"Ragoût de lentilles aux aubergines",book:"simple",page:159,ingredients:["lentilles","aubergines"]},
+  {name:"Boulgour aux aubergines et au yaourt citronné",book:"simple",page:162,ingredients:["boulgour","aubergines","yaourt","citron"]},
+  {name:"Boulgour aux champignons et à la feta",book:"simple",page:164,ingredients:["boulgour","champignons","feta"]},
+  {name:"Lentilles du Puy au caviar d'aubergine, tomates et yaourt",book:"simple",page:166,ingredients:["lentilles","aubergines","tomates","yaourt"]},
+  {name:"Riz pilaf à la menthe, grenade et olives vertes",book:"simple",page:171,ingredients:["riz","menthe","grenade","olives"]},
+  {name:"Riz au four aux tomates confites et à l'ail",book:"simple",page:174,ingredients:["riz","tomates","ail"]},
+  {name:"Nouilles de riz au concombre et au pavot",book:"simple",page:178,ingredients:["nouilles","concombre","pavot"]},
+  {name:"Sobas froides au citron vert, cardamome et avocat",book:"simple",page:181,ingredients:["soba","citron vert","cardamome","avocat"]},
+  {name:"Pâtes à la sicilienne",book:"simple",page:184,ingredients:["pâtes","aubergines","tomates"]},
+  {name:"Tagliatelles piquantes aux tomates cerise",book:"simple",page:187,ingredients:["pâtes","tomates","piment"]},
+  {name:"Pappardelles aux olives noires, câpres et harissa à la rose",book:"simple",page:188,ingredients:["pâtes","olives","câpres","harissa"]},
+  {name:"Gigli aux pois chiches et au zaatar",book:"simple",page:191,ingredients:["pâtes","pois chiches","zaatar"]},
+  {name:"Risoni aux crevettes, tomates et feta marinée",book:"simple",page:193,ingredients:["pâtes","crevettes","tomates","feta"]},
+  {name:"Trofie au basilic et aux pistaches",book:"simple",page:194,ingredients:["pâtes","basilic","pistaches"]},
+  {name:"Gnocchis à la romaine",book:"simple",page:198,ingredients:["semoule","fromage","beurre"]},
+  {name:"Boulettes d'agneau à la feta",book:"simple",page:204,ingredients:["agneau","feta"]},
+  {name:"Parmentier d'agneau au sésame",book:"simple",page:206,ingredients:["agneau","sésame","pommes de terre"]},
+  {name:"Arayes d'agneau au tahin et au sumac",book:"simple",page:214,ingredients:["agneau","tahin","sumac"]},
+  {name:"Pain de viande agneau, tahin, tomates",book:"simple",page:212,ingredients:["agneau","tahin","tomates"]},
+  {name:"Bouchées d'agneau à la pistache, sauce au yaourt et sumac",book:"simple",page:217,ingredients:["agneau","pistaches","yaourt","sumac"]},
+  {name:"Poulet rôti d'Arnold",book:"simple",page:219,ingredients:["poulet","châtaignes"]},
+  {name:"Faux-filet épicé, sauce poivron-citron",book:"simple",page:224,ingredients:["bœuf","poivron","citron"]},
+  {name:"Poulet rôti au citron",book:"simple",page:227,ingredients:["poulet","citron"]},
+  {name:"Cuisses de poulet Marbella",book:"simple",page:229,ingredients:["poulet","olives","câpres"]},
+  {name:"Poulet au miso, gingembre et citron vert",book:"simple",page:230,ingredients:["poulet","miso","gingembre","citron vert"]},
+  {name:"Porc sauté au gingembre, cébettes et aubergines",book:"simple",page:231,ingredients:["porc","gingembre","cébettes","aubergines"]},
+  {name:"Mijoté de poulet au chocolat et croustillant de maïs",book:"simple",page:236,ingredients:["poulet","chocolat","maïs"]},
+  {name:"Pétales de cabillaud, pois chiches et harissa",book:"simple",page:262,ingredients:["cabillaud","pois chiches","harissa"]},
+  {name:"Saumon grillé, sauce aux pignons",book:"simple",page:246,ingredients:["saumon","pignons"]},
+  {name:"Flétan à la tomate et au piment, sauce sésame",book:"simple",page:250,ingredients:["flétan","tomates","piment","sésame"]},
+  {name:"Verrines de fraises rôties au sumac et yaourt égoutté",book:"simple",page:272,ingredients:["fraises","sumac","yaourt"]},
+  {name:"Cake aux myrtilles, citron et amandes",book:"simple",page:276,ingredients:["myrtilles","citron","amandes"]},
+  {name:"Clafoutis aux figues et au thym",book:"simple",page:278,ingredients:["figues","thym"]},
+  {name:"Cheesecake sans cuisson au miel et au yaourt",book:"simple",page:280,ingredients:["miel","yaourt","fromage frais"]},
+  {name:"Gâteau pêche-framboise aux noisettes",book:"simple",page:283,ingredients:["pêches","framboises","noisettes"]},
+  {name:"Barres chocolatées à la menthe et à la pistache",book:"simple",page:288,ingredients:["chocolat","menthe","pistaches"]},
+  {name:"Semifreddo à la framboise",book:"simple",page:292,ingredients:["framboises","crème"]},
+
+  // ===================== PLENTY MORE =====================
+  {name:"Coleslaw fantaisiste",book:"plenty_more",page:20,ingredients:["chou","fenouil","noix de cajou"]},
+  {name:"Salade de céleri, feta et œufs mollets",book:"plenty_more",page:22,ingredients:["céleri","feta","œufs"]},
+  {name:"Salade de cresson aux œufs de caille, ricotta et graines",book:"plenty_more",page:24,ingredients:["cresson","œufs","ricotta","graines"]},
+  {name:"Dakos",book:"plenty_more",page:42,ingredients:["tomates","feta","pain"]},
+  {name:"Salade de figues caramélisées, oranges et feta",book:"plenty_more",page:44,ingredients:["figues","oranges","feta"]},
+  {name:"Salade de riz aux amandes et aux griottes",book:"plenty_more",page:54,ingredients:["riz","amandes","cerises"]},
+  {name:"Riz au citron et aux feuilles de curry",book:"plenty_more",page:56,ingredients:["riz","citron","feuilles de curry"]},
+  {name:"Riz safrané aux dattes et aux amandes",book:"plenty_more",page:60,ingredients:["riz","safran","dattes","amandes"]},
+  {name:"Riz aux légumes et au miso, sauce au sésame noir",book:"plenty_more",page:62,ingredients:["riz","miso","sésame"]},
+  {name:"Salade d'algues, gingembre et carottes",book:"plenty_more",page:70,ingredients:["algues","gingembre","carottes"]},
+  {name:"Navets aux épices",book:"plenty_more",page:72,ingredients:["navets","épices"]},
+  {name:"Nouilles soba et pickles de champignons",book:"plenty_more",page:73,ingredients:["soba","champignons"]},
+  {name:"Salade de brocoli à jets, edamame, feuilles de curry et noix de coco",book:"plenty_more",page:74,ingredients:["brocoli","edamame","noix de coco"]},
+  {name:"Salade de betteraves, avocats et petits pois",book:"plenty_more",page:76,ingredients:["betteraves","avocat","petits pois"]},
+  {name:"Petits pois à l'oseille et à la moutarde",book:"plenty_more",page:82,ingredients:["petits pois","oseille","moutarde"]},
+  {name:"Tagliatelles aux noix et au citron",book:"plenty_more",page:86,ingredients:["pâtes","noix","citron"]},
+  {name:"Risotto aux choux de Bruxelles",book:"plenty_more",page:88,ingredients:["choux de Bruxelles","riz"]},
+  {name:"Soupe aigre et piquante aux champignons",book:"plenty_more",page:95,ingredients:["champignons","graines germées"]},
+  {name:"Soupe épicée aux pois chiches et au boulgour",book:"plenty_more",page:98,ingredients:["pois chiches","boulgour"]},
+  {name:"Soupe thaïe aux lentilles corail et huile au piment",book:"plenty_more",page:100,ingredients:["lentilles","lait de coco","piment"]},
+  {name:"Gaspacho de tomates et de pastèque",book:"plenty_more",page:102,ingredients:["tomates","pastèque"]},
+  {name:"Salade de pois chiches, mangue et curry",book:"plenty_more",page:104,ingredients:["pois chiches","mangue","curry"]},
+  {name:"Betteraves chioggia aux lentilles et au yuzu",book:"plenty_more",page:106,ingredients:["betteraves","lentilles","yuzu"]},
+  {name:"Cœurs d'artichaut et mozzarella au citron confit",book:"plenty_more",page:110,ingredients:["artichauts","mozzarella","citron confit"]},
+  {name:"Curry laksa",book:"plenty_more",page:112,ingredients:["lait de coco","tofu","haricots verts","nouilles"]},
+  {name:"Porridge de quinoa aux tomates poêlées et à l'ail",book:"plenty_more",page:113,ingredients:["quinoa","tomates","ail"]},
+  {name:"Toasts aux pois chiches de cinq heures et aux œufs pochés",book:"plenty_more",page:118,ingredients:["pois chiches","œufs","pain"]},
+  {name:"Salade de quinoa et de fenouil",book:"plenty_more",page:120,ingredients:["quinoa","fenouil"]},
+  {name:"Haricots verts au freekeh et au tahini",book:"plenty_more",page:122,ingredients:["haricots verts","freekeh","tahini"]},
+  {name:"Urad dal à la noix de coco et à la coriandre",book:"plenty_more",page:124,ingredients:["dal","noix de coco","coriandre"]},
+  {name:"Ragout de lentilles aux champignons et au citron confit",book:"plenty_more",page:128,ingredients:["lentilles","champignons","citron confit"]},
+  {name:"Cocotte de fèves, petits pois et laitue, riz au parmesan",book:"plenty_more",page:130,ingredients:["fèves","petits pois","laitue","riz","parmesan"]},
+  {name:"Fèves au citron et à la coriandre",book:"plenty_more",page:132,ingredients:["fèves","citron","coriandre"]},
+  {name:"Kale braisé aux échalotes croustillantes",book:"plenty_more",page:133,ingredients:["kale","échalotes"]},
+  {name:"Courge butternut, polenta de sarrasin et citron en tempura",book:"plenty_more",page:136,ingredients:["butternut","polenta","sarrasin","citron"]},
+  {name:"Lentilles, radicchio et noix au miel de manuka",book:"plenty_more",page:138,ingredients:["lentilles","radicchio","noix","miel"]},
+  {name:"Ratatouille à l'indienne",book:"plenty_more",page:140,ingredients:["aubergines","courgettes","tomates","gombos","poivrons","pommes de terre"]},
+  {name:"Fenouils aux câpres et aux olives",book:"plenty_more",page:142,ingredients:["fenouil","câpres","olives"]},
+  {name:"Champignons, ail, échalotes et ricotta citronnée",book:"plenty_more",page:144,ingredients:["champignons","ail","échalotes","ricotta","citron"]},
+  {name:"Ragoût de légumes à l'iranienne",book:"plenty_more",page:146,ingredients:["aubergines","pommes de terre","épinards"]},
+  {name:"Laitues grillées au farro et aux citrons",book:"plenty_more",page:150,ingredients:["laitue","farro","citron"]},
+  {name:"Courgettes et fenouils grillés, crumble de ciabatta au safran",book:"plenty_more",page:152,ingredients:["courgettes","fenouil","safran","pain"]},
+  {name:"Courge au labné, salsa aux pickles de noix",book:"plenty_more",page:154,ingredients:["courge","labné","noix"]},
+  {name:"Gratin de ziti à la feta",book:"plenty_more",page:156,ingredients:["pâtes","feta","tomates"]},
+  {name:"Tataki de courge et nouilles udon en salade",book:"plenty_more",page:160,ingredients:["courge","nouilles udon"]},
+  {name:"Baba ganoush de courgettes",book:"plenty_more",page:162,ingredients:["courgettes","tahin","ail"]},
+  {name:"Courge marrow aux tomates et à la feta",book:"plenty_more",page:167,ingredients:["courge","tomates","feta"]},
+  {name:"Épis de maïs grillés et mayonnaise au miso",book:"plenty_more",page:166,ingredients:["maïs","miso","mayonnaise"]},
+  {name:"Courge butternut à la cardamome et aux graines de nigelle",book:"plenty_more",page:172,ingredients:["butternut","cardamome","nigelle"]},
+  {name:"Carottes rôties au miel, sauce au yaourt et au tahini",book:"plenty_more",page:174,ingredients:["carottes","miel","yaourt","tahini"]},
+  {name:"Oignons rouges et salsa aux noix",book:"plenty_more",page:176,ingredients:["oignons","noix"]},
+  {name:"Salade de chou-fleur, raisins noirs et cheddar",book:"plenty_more",page:178,ingredients:["chou-fleur","raisins","cheddar"]},
+  {name:"Salade de carottes et haricots mungo",book:"plenty_more",page:180,ingredients:["carottes","haricots mungo"]},
+  {name:"Choux de Bruxelles grillés et pomelo aux étoiles de badiane",book:"plenty_more",page:182,ingredients:["choux de Bruxelles","pomelo","badiane"]},
+  {name:"Betteraves fumées, yaourt et noix de macadamia caramélisées",book:"plenty_more",page:184,ingredients:["betteraves","yaourt","noix de macadamia"]},
+  {name:"Patates douces rôties au sirop amer",book:"plenty_more",page:186,ingredients:["patate douce","sirop"]},
+  {name:"Curry de légumes-racines rôtis aux feuilles de combava",book:"plenty_more",page:188,ingredients:["légumes-racines","combava","curry"]},
+  {name:"Salade de betteraves et de rhubarbe",book:"plenty_more",page:190,ingredients:["betteraves","rhubarbe"]},
+  {name:"Courge rôtie, yaourt au piment et sauce à la coriandre",book:"plenty_more",page:192,ingredients:["courge","yaourt","piment","coriandre"]},
+  {name:"Girolles poêlées au riz gluant noir",book:"plenty_more",page:202,ingredients:["girolles","riz gluant"]},
+  {name:"Légumes frits, yaourt à la menthe et huile verte au piment",book:"plenty_more",page:204,ingredients:["légumes","yaourt","menthe","piment"]},
+  {name:"Gombos frits et sauce tomate au pain",book:"plenty_more",page:208,ingredients:["gombos","tomates","pain"]},
+  {name:"Chou-fleur frit, sauce à la menthe et au tamarin",book:"plenty_more",page:212,ingredients:["chou-fleur","menthe","tamarin"]},
+  {name:"Galettes de quinoa à l'ail sauvage et sauce salvitxada",book:"plenty_more",page:214,ingredients:["quinoa","ail","poivron"]},
+  {name:"Galettes croustillantes de couscous au safran",book:"plenty_more",page:217,ingredients:["couscous","safran"]},
+  {name:"Aubergines, pommes de terre et tomates",book:"plenty_more",page:218,ingredients:["aubergines","pommes de terre","tomates"]},
+  {name:"Orge, lentilles et champignons aux épices douces",book:"plenty_more",page:222,ingredients:["orge","lentilles","champignons"]},
+  {name:"Aubergines à la vapeur, sésame et oignons verts",book:"plenty_more",page:52,ingredients:["aubergines","sésame","oignons verts"]},
+  {name:"Purée de légumes-racines et échalotes braisées",book:"plenty_more",page:230,ingredients:["légumes-racines","échalotes"]},
+  {name:"Purée de fèves à l'ail rôti et à la ricotta",book:"plenty_more",page:234,ingredients:["fèves","ail","ricotta"]},
+  {name:"Purée de lentilles du Puy au tahini et au cumin",book:"plenty_more",page:238,ingredients:["lentilles","tahini","cumin"]},
+  {name:"Purée de cannellini, pickles de champignon et croûtons de pita",book:"plenty_more",page:240,ingredients:["haricots blancs","champignons","pain pita"]},
+  {name:"Carottes écrasées aux pistaches et à la harissa",book:"plenty_more",page:242,ingredients:["carottes","pistaches","harissa"]},
+  {name:"Galettes de pommes de terre farcies",book:"plenty_more",page:244,ingredients:["pommes de terre"]},
+  {name:"Beignets aux poivrons doux",book:"plenty_more",page:256,ingredients:["poivrons","maïs","lait de coco","œufs"]},
+  {name:"Kuku iranien aux aubergines",book:"plenty_more",page:252,ingredients:["aubergines","œufs","herbes"]},
+  {name:"Gâteau de chou-fleur",book:"plenty_more",page:258,ingredients:["chou-fleur","œufs"]},
+  {name:"Quiche aux coings et au stilton",book:"plenty_more",page:260,ingredients:["coings","stilton"]},
+  {name:"Pancakes de maïs et d'oignons verts",book:"plenty_more",page:262,ingredients:["maïs","oignons verts","œufs"]},
+  {name:"Pikelets au kale et au fromage",book:"plenty_more",page:266,ingredients:["kale","fromage","œufs"]},
+  {name:"Tarte corse aux fleurs de courgette",book:"plenty_more",page:270,ingredients:["courgettes","fromage"]},
+  {name:"Nids de kadaif aux aubergines",book:"plenty_more",page:273,ingredients:["aubergines","kadaif"]},
+  {name:"Pies aux légumes-racines",book:"plenty_more",page:294,ingredients:["légumes-racines","courge","pommes de terre"]},
+  {name:"Poivrons farcis au rutabaga et au fromage de chèvre",book:"plenty_more",page:280,ingredients:["poivrons","rutabaga","chèvre"]},
+  {name:"Tartes aux tomates et aux amandes",book:"plenty_more",page:284,ingredients:["tomates","amandes"]},
+  {name:"Pudding de pain au romarin et à la ricotta",book:"plenty_more",page:286,ingredients:["pain","ricotta","romarin"]},
+  {name:"Roulé au taleggio et aux épinards",book:"plenty_more",page:290,ingredients:["taleggio","épinards"]},
+  {name:"Batata harra",book:"plenty_more",page:292,ingredients:["pommes de terre","piment","ail"]},
+  {name:"Orzo al forno",book:"plenty_more",page:288,ingredients:["pâtes","tomates","fromage"]},
+  {name:"Nouilles udon et aubergines frites aux noix et au miso",book:"plenty_more",page:216,ingredients:["nouilles udon","aubergines","noix","miso"]},
+  {name:"Coings pochés au jus de grenade",book:"plenty_more",page:304,ingredients:["coings","grenade"]},
+  {name:"Rhubarbe rôtie au labné",book:"plenty_more",page:302,ingredients:["rhubarbe","labné"]},
+  {name:"Tarte aux figues et au fromage de chèvre frais",book:"plenty_more",page:310,ingredients:["figues","chèvre"]},
+  {name:"Figues rôties à la mélasse de grenade et au zeste d'orange",book:"plenty_more",page:312,ingredients:["figues","grenade","orange"]},
+  {name:"Compote de mûres et crème anglaise au laurier et au gin",book:"plenty_more",page:316,ingredients:["mûres","laurier","gin"]},
+  {name:"Cheesecake en pièces détachées et compote de prunes",book:"plenty_more",page:318,ingredients:["prunes","fromage frais"]},
+  {name:"Gâteau aux abricots, aux noix et à la lavande",book:"plenty_more",page:320,ingredients:["abricots","noix","lavande"]},
+  {name:"Pancakes à la ricotta et chutney de groseilles",book:"plenty_more",page:323,ingredients:["ricotta","groseilles"]},
+  {name:"Cake aux noix et au halva",book:"plenty_more",page:326,ingredients:["noix","halva"]},
+  {name:"Glace au halva, sauce au chocolat",book:"plenty_more",page:328,ingredients:["halva","chocolat"]},
+  {name:"Pain à la banane grillé, tahini et miel en rayons",book:"plenty_more",page:330,ingredients:["banane","tahini","miel"]},
+  {name:"Beignets de ricotta à l'orange et au miel",book:"plenty_more",page:334,ingredients:["ricotta","orange","miel"]},
+  {name:"Pudding à l'orge et au sésame, sirop à l'orange",book:"plenty_more",page:336,ingredients:["orge","sésame","orange"]},
+  {name:"Pudding de riz à la feuille de pandanus, sirop de mangues et citron vert",book:"plenty_more",page:342,ingredients:["riz","pandanus","mangue","citron vert"]},
+  {name:"Meringue roulée aux pétales de rose et aux framboises",book:"plenty_more",page:344,ingredients:["framboises","rose","meringue"]},
+  {name:"Poires caramélisées au cognac et crackers au fenouil",book:"plenty_more",page:308,ingredients:["poires","cognac","fenouil"]},
+
+  // ===================== FLAVOUR =====================
+  // CARBONISATION / LÉGUMES RÔTIS
+  {name:"Pêches et haricots d'Espagne grillés, par Calvin",book:"flavour",page:37,ingredients:["pêches","haricots d'Espagne","fromage de chèvre"]},
+  {name:"Quartiers de laitue iceberg à la crème d'aubergine fumée",book:"flavour",page:38,ingredients:["laitue","aubergines"]},
+  {name:"Haricots de Lima à l'huile de cascabel fumée",book:"flavour",page:41,ingredients:["haricots de Lima","piment cascabel"]},
+  {name:"Soupe aux herbes et aux aubergines grillées",book:"flavour",page:42,ingredients:["aubergines","herbes","coriandre"]},
+  {name:"Chou hispi et nam phrik",book:"flavour",page:44,ingredients:["chou hispi","piment","galanga"]},
+  {name:"Aubergines à la vapeur et salsa au piment grillé",book:"flavour",page:45,ingredients:["aubergines","piment"]},
+  {name:"Haricots verts grillés, puis mijotés",book:"flavour",page:49,ingredients:["haricots verts","ail","citron"]},
+  {name:"Betterave Hasselback et beurre de feuilles de combava",book:"flavour",page:50,ingredients:["betterave","combava","beurre"]},
+  {name:"Banane plantain aux épices et salade de noix de coco, pommes et gingembre",book:"flavour",page:62,ingredients:["banane plantain","noix de coco","pommes","gingembre"]},
+  {name:"Purée de carottes au curry et au beurre brun",book:"flavour",page:67,ingredients:["carottes","curry","beurre brun"]},
+  {name:"Ragoût d'orge, tomate et cresson",book:"flavour",page:68,ingredients:["orge","tomates","cresson"]},
+  // MATURATION / ACIDITÉ
+  {name:"Gratin de pommes de terre au citron vert et noix de coco",book:"flavour",page:72,ingredients:["pommes de terre","citron vert","noix de coco"]},
+  {name:"Bkaila, ragoût de pommes de terre et haricots de Lima",book:"flavour",page:75,ingredients:["haricots de Lima","pommes de terre","épinards"]},
+  {name:"Purée de haricots blancs et aïoli",book:"flavour",page:76,ingredients:["haricots blancs","aïoli","ail"]},
+  {name:"Houmous au citron, ail frit et piment",book:"flavour",page:79,ingredients:["pois chiches","citron","ail","piment"]},
+  {name:"Salade de melon et mozzarella di buffala, kasha et feuilles de curry",book:"flavour",page:80,ingredients:["melon","mozzarella","kasha","feuilles de curry"]},
+  {name:"Soupe d'avocat froide et huile croquante à l'ail",book:"flavour",page:82,ingredients:["avocat","ail"]},
+  {name:"Pappa al pomodoro au citron vert et graines de moutarde",book:"flavour",page:85,ingredients:["tomates","pain","citron vert","moutarde"]},
+  {name:"Haricots noirs à la noix de coco, piment et citron vert",book:"flavour",page:86,ingredients:["haricots noirs","noix de coco","piment","citron vert"]},
+  {name:"Frites au four et mayonnaise aux feuilles de curry",book:"flavour",page:89,ingredients:["pommes de terre","feuilles de curry","mayonnaise"]},
+  {name:"Pancakes de pois chiches et yaourt à la mangue",book:"flavour",page:91,ingredients:["pois chiches","mangue","yaourt"]},
+  {name:"Choux de Bruxelles à l'aigre-douce, châtaignes et raisins",book:"flavour",page:93,ingredients:["choux de Bruxelles","châtaignes","raisins","vinaigre"]},
+  {name:"Gnocchis de rutabaga au beurre de miso",book:"flavour",page:94,ingredients:["rutabaga","miso","beurre"]},
+  {name:"Pommes de terre et œufs braisés au gochujang",book:"flavour",page:99,ingredients:["pommes de terre","œufs","gochujang"]},
+  {name:"Le ragu ultime cuit sur une plaque",book:"flavour",page:101,ingredients:["carottes","lentilles","orge","tomates","champignons"]},
+  {name:"Pancakes aux asperges et au gochujang",book:"flavour",page:102,ingredients:["asperges","gochujang","oignons verts"]},
+  {name:"Cacio e pepe au zaatar",book:"flavour",page:104,ingredients:["pâtes","zaatar","pecorino","parmesan"]},
+  {name:"Figues grillées et vinaigrette au vin de Shaoxing",book:"flavour",page:110,ingredients:["figues","vin de Shaoxing","roquette","ricotta"]},
+  {name:"Légumes de printemps au bouillon de parmesan et salsa au citron grillé",book:"flavour",page:109,ingredients:["légumes","parmesan","citron"]},
+  {name:"Salade de concombre inspirée par Xian Impression",book:"flavour",page:113,ingredients:["concombre","tahini","soja"]},
+  // SUCRÉ / GRAS
+  {name:"Patates douces à la sauce tomate, citron vert et cardamome",book:"flavour",page:131,ingredients:["patate douce","tomates","citron vert","cardamome"]},
+  {name:"Galette de butternut, orange et sauge",book:"flavour",page:132,ingredients:["butternut","orange","sauge","mascarpone","carottes"]},
+  {name:"Caponata fusion au tofu soyeux",book:"flavour",page:135,ingredients:["tofu","aubergines","tomates","basilic thaï"]},
+  {name:"Purée de courge, par Esme",book:"flavour",page:136,ingredients:["courge","beurre"]},
+  {name:"Couscous perlé et courge, sauce tomate à l'anis étoilé",book:"flavour",page:137,ingredients:["couscous","courge","tomates","anis étoilé","ail","épinards"]},
+  {name:"Orecchiette puttanesca façon one-pot",book:"flavour",page:139,ingredients:["pâtes","tomates","olives","anchois","câpres","ail"]},
+  {name:"Poivrons grillés, polenta de maïs et jaunes d'œufs confits en sauce soja",book:"flavour",page:140,ingredients:["poivrons","polenta","maïs","œufs","soja"]},
+  {name:"Aubergines farcies au curry et dhal au lait de coco",book:"flavour",page:152,ingredients:["aubergines","lentilles","lait de coco","curry","épinards"]},
+  {name:"Pâtes mafalda et butternut rôtie, sauce chaude au yaourt",book:"flavour",page:151,ingredients:["pâtes","butternut","yaourt"]},
+  {name:"Boulettes d'aubergine alla parmigiana",book:"flavour",page:156,ingredients:["aubergines","parmesan","tomates","ricotta","chapelure"]},
+  {name:"Tamales au fromage avec garnitures",book:"flavour",page:158,ingredients:["masa harina","fromage","poivrons","tomates"]},
+  {name:"Salade d'avocats",book:"flavour",page:159,ingredients:["avocat","piment"]},
+  {name:"Polenta au maïs frais et œufs braisés",book:"flavour",page:163,ingredients:["polenta","maïs","œufs","parmesan","feta","épinards"]},
+  {name:"Salade de tomates et yaourt au citron vert et à la cardamome",book:"flavour",page:164,ingredients:["tomates","yaourt","citron vert","cardamome"]},
+  {name:"Beignets de riz au kimchi et au gruyère",book:"flavour",page:166,ingredients:["riz","kimchi","gruyère","haricots verts"]},
+  {name:"Tofu à la cardamome et choy sum au citron vert",book:"flavour",page:172,ingredients:["tofu","cardamome","choy sum","citron vert"]},
+  {name:"Verdure braisée au yaourt",book:"flavour",page:175,ingredients:["cavolo nero","blettes","yaourt","citron noir"]},
+  {name:"Tofu au citron noir séché, par Noor",book:"flavour",page:176,ingredients:["tofu","citron noir","épinards","nouilles"]},
+  {name:"Bette arc-en-ciel aux tomates et olives vertes",book:"flavour",page:183,ingredients:["blettes","tomates","olives"]},
+  {name:"Tempura de tiges, feuilles et herbes",book:"flavour",page:184,ingredients:["herbes","aneth","menthe"]},
+  {name:"Brocoli en deux façons, avec piment et cumin",book:"flavour",page:186,ingredients:["brocoli","piment","cumin"]},
+  {name:"Salade de carottes rôties, sauce Chamoy",book:"flavour",page:187,ingredients:["carottes","abricots","citron"]},
+  {name:"Chou à la crème de gingembre et huile qui picote",book:"flavour",page:196,ingredients:["chou","gingembre","fromage à la crème"]},
+  {name:"Tagliatelles au safran, ricotta et échalotes frites au piment chipotle",book:"flavour",page:199,ingredients:["pâtes","safran","ricotta","échalotes","piment chipotle"]},
+  {name:"Nouilles udon au tofu frit et nam jim à l'orange sanguine",book:"flavour",page:202,ingredients:["nouilles udon","tofu","orange sanguine"]},
+  {name:"Chou-fleur rôti au beurre pimenté",book:"flavour",page:205,ingredients:["chou-fleur","beurre","piment","harissa"]},
+  {name:"Courgettes moelleuses à la harissa et au citron",book:"flavour",page:204,ingredients:["courgettes","harissa","citron","ail"]},
+  {name:"Ratatouille au berbéré et salsa à la crème de coco",book:"flavour",page:209,ingredients:["courgettes","aubergines","tomates","chou-rave","noix de coco","coriandre"]},
+  {name:"Steaks de portobello et purée de haricots de Lima",book:"flavour",page:210,ingredients:["champignons portobello","haricots de Lima","piment chipotle","ail"]},
+  // PIQUANT
+  {name:"Steaks de rutabaga en croûte de curry",book:"flavour",page:63,ingredients:["rutabaga","curry","fenugrec","pamplemousse"]},
+  {name:"Piments verts marinés",book:"flavour",page:199,ingredients:["piments","vinaigre"]},
+  {name:"Échalotes frites au piment chipotle",book:"flavour",page:199,ingredients:["échalotes","piment chipotle"]},
+  {name:"Salade de concombre, zaatar et citron haché",book:"flavour",page:191,ingredients:["concombre","zaatar","citron","mâche"]},
+  {name:"Salade de radis et concombre, cacahuètes au piment chipotle",book:"flavour",page:263,ingredients:["radis","concombre","cacahuètes","piment chipotle"]},
+  {name:"Salade de 'nouilles' de chou-rave",book:"flavour",page:260,ingredients:["chou-rave","tahini","cacahuètes"]},
+  {name:"Purée de patate douce au yaourt et citron vert",book:"flavour",page:192,ingredients:["patate douce","yaourt","citron vert"]},
+  // CHAMPIGNONS / UMAMI
+  {name:"Houmous à l'ail confit et champignons grillés",book:"flavour",page:234,ingredients:["pois chiches","champignons","ail confit"]},
+  {name:"Ketchup aux champignons et nori",book:"flavour",page:227,ingredients:["champignons","nori","shiitake"]},
+  {name:"Lasagnes aux champignons épicés",book:"flavour",page:228,ingredients:["champignons","pâtes","cèpes","parmesan","pecorino"]},
+  {name:"Salade de nouilles et laab aux champignons et aux cacahuètes",book:"flavour",page:233,ingredients:["champignons","nouilles","cacahuètes","concombre","citron vert"]},
+  {name:"Candji de riz brun et shiitakes",book:"flavour",page:237,ingredients:["riz","shiitake","ail","gingembre"]},
+  {name:"Tacos aux pleurotes avec garnitures",book:"flavour",page:238,ingredients:["pleurotes","masa harina","crème d'avocat","pickles d'oignons"]},
+  {name:"Oignons au beurre de miso",book:"flavour",page:258,ingredients:["oignons","miso","beurre"]},
+  {name:"Poireaux et salsa au miso et à la ciboulette",book:"flavour",page:257,ingredients:["poireaux","miso","ciboulette"]},
+  {name:"Pains plats à l'huile d'olive et beurre aux trois ails",book:"flavour",page:246,ingredients:["pain","ail","ail noir","beurre"]},
+  {name:"Aubergines aux herbes et à l'ail frit",book:"flavour",page:251,ingredients:["aubergines","herbes","ail"]},
+  {name:"Rondelles d'oignon frites au babeurre et au curcuma",book:"flavour",page:255,ingredients:["oignons","babeurre","curcuma"]},
+  {name:"Dirty rice",book:"flavour",page:252,ingredients:["riz","châtaignes","ail noir","champignons"]},
+  {name:"Beurre au citron noir et graines de courges",book:"flavour",page:264,ingredients:["citron noir","graines de courge","beurre"]},
+  {name:"Sel de sésame et nori",book:"flavour",page:267,ingredients:["sésame","nori"]},
+  {name:"Boulettes de tofu korma",book:"flavour",page:268,ingredients:["tofu","noix de cajou","feuilles de curry","chapelure panko"]},
+  {name:"Croquant au sirop d'érable",book:"flavour",page:270,ingredients:["châtaignes","pignons","sirop d'érable","daïkon"]},
+  {name:"Cacahuètes au piment chipotle",book:"flavour",page:263,ingredients:["cacahuètes","piment chipotle"]},
+  {name:"Salade de pommes de terre et salsa au basilic thaï",book:"flavour",page:275,ingredients:["pommes de terre","basilic thaï","topinambours"]},
+  {name:"Pommes de terre rôties aux épices, sauce tahini et soja",book:"flavour",page:276,ingredients:["pommes de terre","tahini","soja","harissa"]},
+  {name:"Omelettes fines au lait de coco et curcuma",book:"flavour",page:145,ingredients:["œufs","lait de coco","curcuma","germes de haricots","pommes de terre"]},
+  {name:"Schnitzels de poivrons rouges",book:"flavour",page:146,ingredients:["poivrons","chapelure panko","feuilles de combava"]},
+  // DESSERTS Flavour
+  {name:"Flan de mandarine et piment ancho",book:"flavour",page:278,ingredients:["mandarine","piment ancho","lait","œufs"]},
+  {name:"Sorbet pastèque-fraise",book:"flavour",page:283,ingredients:["pastèque","fraises","citron vert","combava"]},
+  {name:"Glace à la noix de coco, litchis et fruits de la passion",book:"flavour",page:286,ingredients:["noix de coco","litchis","fruits de la passion","aquafaba"]},
+  {name:"Les citrons givrés de Max et Flynn",book:"flavour",page:289,ingredients:["citrons","tisane d'hibiscus"]},
+  {name:"Crêpes aux bananes rôties et crème de la Barbade",book:"flavour",page:290,ingredients:["bananes","mascarpone","rhum"]},
+  {name:"Entremets café-pandanus",book:"flavour",page:291,ingredients:["café","pandanus","noix de macadamia","œufs"]},
+  {name:"Beignets de tapioca et sirop d'orange à l'anis étoilé",book:"flavour",page:280,ingredients:["tapioca","orange","anis étoilé"]},
+  {name:"Abricots pochés et mascarpone aux pistaches et biscuits amaretti",book:"flavour",page:282,ingredients:["abricots","mascarpone","pistaches","amaretti"]},
+  {name:"Assiette de fruits rouges au labneh de brebis et huile d'orange",book:"flavour",page:295,ingredients:["fruits rouges","labneh","orange","cerises","framboises","fraises"]},
+  {name:"Salade de tomates et de prunes, sel de sésame et nori",book:"flavour",page:267,ingredients:["tomates","prunes","sésame","nori","roquette"]},
+  {name:"Salade d'asperges au tamarin et au citron vert",book:"flavour",page:171,ingredients:["asperges","tamarin","citron vert","pistaches"]},
+
+  // ===================== COMFORT =====================
+  // PETITS-DÉJEUNERS & BRUNCH
+  {name:"Dutch baby aux tomates rôties",book:"comfort",page:22,ingredients:["œufs","tomates","farine","beurre"]},
+  {name:"Œufs et cresson",book:"comfort",page:25,ingredients:["œufs","cresson","pesto","pistaches"]},
+  {name:"Sambal aux œufs façon chakchouka",book:"comfort",page:26,ingredients:["œufs","tomates","harissa","piments"]},
+  {name:"Frittata de poireaux, tomates et curcuma",book:"comfort",page:29,ingredients:["poireaux","tomates","curcuma","œufs"]},
+  {name:"Tortang talong",book:"comfort",page:30,ingredients:["aubergines","œufs","harissa","tomates"]},
+  {name:"Œufs vapeur aux crevettes et à la ciboulette",book:"comfort",page:34,ingredients:["œufs","crevettes","ciboulette"]},
+  {name:"Crêpes — recette de base",book:"comfort",page:39,ingredients:["œufs","farine","lait","beurre"]},
+  {name:"Crêpes et pâte à tartiner sésame-noisettes",book:"comfort",page:40,ingredients:["crêpes","sésame","noisettes","praliné"]},
+  {name:"Crêpes au curry et fromage",book:"comfort",page:42,ingredients:["crêpes","curry","fromage","jambon","haricots blancs"]},
+  {name:"Crêpes au citron, mascarpone et thym",book:"comfort",page:44,ingredients:["crêpes","citron","mascarpone","thym"]},
+  {name:"Pancakes de polenta et salade de maïs aux épices",book:"comfort",page:46,ingredients:["polenta","maïs","cacahuètes","oignons verts"]},
+  {name:"Pancakes pleins de trous",book:"comfort",page:49,ingredients:["semoule","noix de pécan","beurre"]},
+  // SOUPES
+  {name:"Soupe d'aubergines, tomates et poivrons rôtis",book:"comfort",page:53,ingredients:["aubergines","tomates","poivrons","ail"]},
+  {name:"Mulligatawny",book:"comfort",page:54,ingredients:["carottes","lentilles","lait de coco","poulet","curry"]},
+  {name:"Soupe de pois cassés et jambon",book:"comfort",page:55,ingredients:["pois cassés","jambon","carottes","menthe"]},
+  {name:"Soupe aux boulettes de matzo",book:"comfort",page:58,ingredients:["matzo","bouillon de volaille","mélange hawaji"]},
+  {name:"Soupe au pain, fromage et chou vert",book:"comfort",page:61,ingredients:["pain","fromage","chou","ail","anchois"]},
+  // HOUMOUS & DIPS
+  {name:"Houmous",book:"comfort",page:62,ingredients:["pois chiches","tahin","citron","ail"]},
+  {name:"Houmous de pois chiches et fenouil",book:"comfort",page:63,ingredients:["pois chiches","fenouil","tahin","citron","olives"]},
+  // PETITES BOUCHÉES
+  {name:"Beignets de riz au fromage",book:"comfort",page:68,ingredients:["riz","fromage","petits pois","œufs"]},
+  {name:"Falafels de haricots mungo et dip au kimchi",book:"comfort",page:69,ingredients:["haricots mungo","chou","kimchi"]},
+  {name:"Pakoras de chou-fleur et butternut",book:"comfort",page:72,ingredients:["chou-fleur","butternut","épices","sauce tamarin"]},
+  {name:"Beignets de crevettes à la malaisienne (cucur udang)",book:"comfort",page:76,ingredients:["crevettes","piments","gingembre","oignons verts"]},
+  {name:"Sando au poulet et mayonnaise à la harissa",book:"comfort",page:78,ingredients:["poulet","harissa","mayonnaise","yaourt aux épices"]},
+  {name:"Galettes de saumon et sauce rémoulade façon chermoula",book:"comfort",page:80,ingredients:["saumon","patate douce","chermoula","câpres"]},
+  {name:"Boulettes de viande au nuoc cham, concombre et menthe",book:"comfort",page:83,ingredients:["porc","bœuf","nuoc cham","concombre","menthe"]},
+  // LÉGUMES
+  {name:"Caponata au céleri et à la burrata",book:"comfort",page:86,ingredients:["céleri","tomates","olives","câpres","burrata"]},
+  {name:"Crème d'aubergine fumée façon salade César",book:"comfort",page:87,ingredients:["aubergines","ail","anchois","laitue","crudités"]},
+  {name:"Aubergines à la vapeur",book:"comfort",page:93,ingredients:["aubergines","tahin","citron"]},
+  {name:"Ragu de champignons",book:"comfort",page:98,ingredients:["champignons","céleri","tomates","pâtes"]},
+  {name:"Haricots blancs aux tomates cerises rôties",book:"comfort",page:101,ingredients:["haricots blancs","tomates","yaourt"]},
+  {name:"Toasts aux haricots verts braisés",book:"comfort",page:102,ingredients:["haricots verts","pain","mascarpone","pignons"]},
+  {name:"Céleri-rave rôti et crème au gorgonzola",book:"comfort",page:105,ingredients:["céleri-rave","gorgonzola","ail","poivron"]},
+  {name:"Carottes rôties et dukkah aux feuilles de curry",book:"comfort",page:106,ingredients:["carottes","dukkah","yaourt","feuilles de curry","noix de cajou"]},
+  {name:"Chou-rave braisé au beurre et chimichurri aux olives",book:"comfort",page:109,ingredients:["chou-rave","beurre","olives","chimichurri"]},
+  {name:"Choux de Bruxelles « brûlés » à l'huile d'olive et au citron",book:"comfort",page:110,ingredients:["choux de Bruxelles","citron","ail"]},
+  {name:"Betteraves rôties, vinaigrette à l'estragon et tarator aux noix",book:"comfort",page:115,ingredients:["betteraves","estragon","noix","tarator"]},
+  {name:"Panais rôtis au parmesan et au poivre",book:"comfort",page:116,ingredients:["panais","parmesan","poivre"]},
+  {name:"Épinards et artichauts « à la crème »",book:"comfort",page:97,ingredients:["épinards","artichauts","crème","tofu"]},
+  // POULET
+  {name:"Poulet rôti avec la marinade de tante Pauline",book:"comfort",page:121,ingredients:["poulet","citron vert","lait de coco","épices"]},
+  {name:"Poulet aux épices de Steph",book:"comfort",page:122,ingredients:["poulet","épices","yaourt"]},
+  {name:"Riz au lait de coco, sauce aux cacahuètes et relish au concombre",book:"comfort",page:124,ingredients:["riz","lait de coco","cacahuètes","concombre","poulet mariné"]},
+  {name:"Poulet mariné aux épices",book:"comfort",page:125,ingredients:["poulet","épices","yaourt"]},
+  {name:"Poulet rôti et dukkah aux feuilles de curry",book:"comfort",page:128,ingredients:["poulet","dukkah","feuilles de curry","noix de cajou"]},
+  {name:"Riz au citron et boulettes de fromage, avec un beurre au piment",book:"comfort",page:133,ingredients:["riz","fromage","ricotta","citron","beurre","piment"]},
+  {name:"Blancs de poulet pochés à l'asiatique, chou chinois et cacahuètes au rayu",book:"comfort",page:136,ingredients:["poulet","chou chinois","cacahuètes","rayu"]},
+  {name:"Pain de viande shawarma aux oignons caramélisés",book:"comfort",page:139,ingredients:["agneau","courgettes","oignons","yaourt à la grenade"]},
+  {name:"Chou hispi rôti et beurre de miso",book:"comfort",page:140,ingredients:["chou hispi","miso","beurre"]},
+  {name:"Chou-fleur rôti aux épices hawaji et sauce gribiche",book:"comfort",page:144,ingredients:["chou-fleur","mélange hawaji","sauce gribiche","œufs"]},
+  {name:"Riz au fromage, gombos et tomates",book:"comfort",page:146,ingredients:["riz","fromage","gombos","tomates"]},
+  {name:"Fenouil et cabillaud braisés aux haricots et beurre 'nduja",book:"comfort",page:148,ingredients:["fenouil","cabillaud","haricots blancs","'nduja"]},
+  {name:"Saumon rôti alla puttanesca",book:"comfort",page:153,ingredients:["saumon","tomates","olives","câpres","ail","anchois"]},
+  {name:"Dahl de lentilles corail, pommes de terre et fenouil",book:"comfort",page:157,ingredients:["lentilles","pommes de terre","fenouil","lait de coco"]},
+  {name:"Oyakodon",book:"comfort",page:158,ingredients:["poulet","œufs","oignons","riz"]},
+  {name:"Poitrine de porc braisée à la sauce soja, œufs et tofu",book:"comfort",page:162,ingredients:["porc","soja","œufs","tofu"]},
+  {name:"Ragoût de butternut au tamarin et lait de coco",book:"comfort",page:164,ingredients:["butternut","tamarin","lait de coco","ail"]},
+  {name:"Pains plats au cumin et à la coriandre",book:"comfort",page:165,ingredients:["farine","cumin","coriandre"]},
+  {name:"Curry de crevettes et asperges au curcuma frais et au poivre",book:"comfort",page:169,ingredients:["crevettes","asperges","curcuma","lait de coco","relish au concombre"]},
+  {name:"Curry de thon à la citronnelle et au galanga",book:"comfort",page:170,ingredients:["thon","citronnelle","galanga","lait de coco"]},
+  {name:"Curry de poulet et feuilles de combava aux nouilles",book:"comfort",page:174,ingredients:["poulet","combava","nouilles","lait de coco","haricots verts"]},
+  {name:"Boulettes de poulet, pommes de terre et citron",book:"comfort",page:176,ingredients:["poulet","pommes de terre","citron","ail"]},
+  {name:"Agneau braisé aux haricots blancs et au yaourt",book:"comfort",page:179,ingredients:["agneau","haricots blancs","yaourt","ail"]},
+  {name:"Saucisses aux lentilles et crème à la moutarde",book:"comfort",page:181,ingredients:["saucisses","lentilles","moutarde","poivrons"]},
+  {name:"Nouilles au thé vert, avocat et radis",book:"comfort",page:184,ingredients:["nouilles","avocat","radis","sauce citron-soja"]},
+  {name:"Nasi goreng aux crevettes et haricots verts",book:"comfort",page:187,ingredients:["riz","crevettes","haricots verts","piments"]},
+  {name:"Ramen express aux champignons",book:"comfort",page:188,ingredients:["champignons","nouilles","sauce aux oignons verts","œufs"]},
+  {name:"Poisson et riz au gingembre",book:"comfort",page:191,ingredients:["poisson","riz","gingembre","oignons verts","dip piment-gingembre"]},
+  {name:"Tofu froid et vinaigrette épicée au sésame",book:"comfort",page:192,ingredients:["tofu","sésame","vinaigrette épicée"]},
+  {name:"Congee au poulet",book:"comfort",page:194,ingredients:["poulet","riz","gingembre","germes de soja","oignons verts"]},
+  {name:"Mapo tofu aux champignons et kimchi",book:"comfort",page:196,ingredients:["tofu","champignons","kimchi","piments"]},
+  {name:"Pâtes au pesto, haricots grillés et pommes de terre",book:"comfort",page:201,ingredients:["pâtes","pesto","haricots verts","pommes de terre","pignons"]},
+  {name:"Orecchiette aux oignons caramélisés, noisettes grillées et feuilles de sauge frites",book:"comfort",page:202,ingredients:["pâtes","oignons","noisettes","sauge"]},
+  {name:"Linguine au beurre miso, shiitake et épinards",book:"comfort",page:205,ingredients:["pâtes","miso","shiitake","épinards"]},
+  {name:"Rigatoni al ragù bianco",book:"comfort",page:206,ingredients:["pâtes","porc","bœuf","ail","pommes de terre"]},
+  {name:"Pâtes à la bolognaise d'Helen",book:"comfort",page:207,ingredients:["pâtes","bœuf","porc","tomates"]},
+  {name:"Boulettes de viande Stroganoff",book:"comfort",page:210,ingredients:["bœuf","porc","champignons","crème","pâtes"]},
+  {name:"Poulet en cocotte à l'orzo et aux cèpes",book:"comfort",page:213,ingredients:["poulet","orzo","cèpes","champignons","ail"]},
+  {name:"Lasagnes aux courgettes et fenouil",book:"comfort",page:214,ingredients:["courgettes","fenouil","fromage","ricotta","artichaut"]},
+  {name:"Lasagnes au ragù de saucisse pour un repas solo",book:"comfort",page:215,ingredients:["saucisses","pâtes","fromage","tomates"]},
+  {name:"Pâtes au four aux tomates et aubergines",book:"comfort",page:218,ingredients:["pâtes","tomates","aubergines","ail","fromage"]},
+  {name:"Sauté de dinde « rags-to-riches » et polenta",book:"comfort",page:220,ingredients:["dinde","polenta","tomates","olives"]},
+  {name:"Polenta gratinée aux courgettes et harissa verte",book:"comfort",page:223,ingredients:["polenta","courgettes","harissa verte","fromage"]},
+  {name:"Salade de pommes de terre de Verena",book:"comfort",page:224,ingredients:["pommes de terre","pancetta","concombre","moutarde"]},
+  {name:"Frites maison à l'indonésienne",book:"comfort",page:227,ingredients:["pommes de terre","ail","mayonnaise"]},
+  {name:"Pommes de terre croustillantes au romarin et au zaatar",book:"comfort",page:228,ingredients:["pommes de terre","romarin","zaatar"]},
+  {name:"Aligot à l'ail et poireaux rôtis au thym",book:"comfort",page:231,ingredients:["pommes de terre","fromage","poireaux","thym","ail"]},
+  {name:"Gratin de pommes de terre, fenouil et saumon fumé",book:"comfort",page:232,ingredients:["pommes de terre","fenouil","saumon fumé","crème"]},
+  {name:"Pommes de terre et aubergines rôties, sauce verte au tahin",book:"comfort",page:234,ingredients:["pommes de terre","aubergines","tahin","herbes","menthe"]},
+  // PÂTISSERIES & BOULANGERIE
+  {name:"Bérek aux épinards",book:"comfort",page:238,ingredients:["épinards","filo","fromage","ricotta","pignons"]},
+  {name:"Butteries au fromage et oignons verts",book:"comfort",page:242,ingredients:["fromage","oignons verts","pâte feuilletée"]},
+  {name:"Demi-lunes aux pommes de terre, fromage et chermoula",book:"comfort",page:249,ingredients:["pommes de terre","fromage","chermoula","olives","pâte feuilletée"]},
+  {name:"Tourte au bœuf, ail noir et baharat",book:"comfort",page:252,ingredients:["bœuf","ail noir","baharat","navets","olives","pâte feuilletée"]},
+  {name:"Rugelachs aux poireaux, fromage et zaatar",book:"comfort",page:254,ingredients:["poireaux","fromage","zaatar","cream cheese"]},
+  {name:"Tarte aux tomates rôties, fromage et pâte Marmite®",book:"comfort",page:256,ingredients:["tomates","fromage","Marmite","pâte feuilletée","ail"]},
+  {name:"Fish pie « bohème »",book:"comfort",page:260,ingredients:["poisson","fruits de mer","pommes de terre","purée de céleri","haricots blancs"]},
+  {name:"Purée de céleri et haricots blancs",book:"comfort",page:260,ingredients:["céleri","haricots blancs"]},
+  {name:"Pain aux épinards et asperges",book:"comfort",page:263,ingredients:["épinards","asperges","fromage","cresson"]},
+  {name:"Pain express aux carottes et vadouvan",book:"comfort",page:264,ingredients:["carottes","vadouvan","yaourt"]},
+  {name:"Bread rolls",book:"comfort",page:266,ingredients:["farine","levure","beurre"]},
+  // DESSERTS
+  {name:"Pudding de flocons d'avoine à la cannelle, banane et fraises",book:"comfort",page:273,ingredients:["avoine","banane","fraises","cannelle"]},
+  {name:"Biscuits sans gluten au chocolat blanc caramélisé et noix de macadamia",book:"comfort",page:274,ingredients:["chocolat blanc","noix de macadamia","avoine"]},
+  {name:"Baked custard servie en affogato",book:"comfort",page:277,ingredients:["œufs","lait","café","noix de coco"]},
+  {name:"Mess au citron, myrtilles, pâte à kataifi et meringue",book:"comfort",page:280,ingredients:["citron","myrtilles","kataifi","meringue","crème"]},
+  {name:"Chocolate ripple cake",book:"comfort",page:282,ingredients:["chocolat","biscuits","crème","fraises"]},
+  {name:"Mousse au chocolat et caramel à l'orange",book:"comfort",page:286,ingredients:["chocolat","orange","caramel","crème"]},
+  {name:"Gâteau aux pommes, mûres et gingembre",book:"comfort",page:289,ingredients:["pommes","mûres","gingembre"]},
+  {name:"Gâteau hollandais aux pommes",book:"comfort",page:290,ingredients:["pommes","beurre","œufs"]},
+  {name:"Cheesecake sans pâte et compote de prunes",book:"comfort",page:296,ingredients:["fromage frais","prunes","cream cheese"]},
+  {name:"Gâteau texan végan",book:"comfort",page:298,ingredients:["chocolat","café","épices"]},
+  {name:"Kaiserschmarrn",book:"comfort",page:300,ingredients:["œufs","farine","prunes","raisins"]},
+  {name:"Cookies au chocolat façon brownies, fourrés d'une crème au tahin et halva",book:"comfort",page:302,ingredients:["chocolat","tahin","halva","beurre"]},
+  {name:"Pudding malté aux figues",book:"comfort",page:305,ingredients:["figues","malt","chocolat","crème"]},
+  {name:"Gâteau marbré — souvenir d'enfance de Verena",book:"comfort",page:295,ingredients:["chocolat","vanille","beurre","œufs"]},
+
+  // ===================== OTK: SHELF LOVE =====================
+  // PETITS-DÉJEUNERS & ENTRÉES
+  {name:"Soupe à l'oignon et pois chiches aux épices hawaij et toasts au fromage",book:"shelf_love",page:16,ingredients:["oignons","pois chiches","fromage","mélange hawaij","pain"]},
+  {name:"Houmous crémeux à souhait",book:"shelf_love",page:20,ingredients:["pois chiches","tahin","citron","ail"]},
+  {name:"Pitas",book:"shelf_love",page:23,ingredients:["farine","levure","huile d'olive"]},
+  {name:"Polenta au fromage et à la sauce tomate",book:"shelf_love",page:24,ingredients:["polenta","fromage","tomates"]},
+  {name:"Cannellinis aux herbes et au tahini",book:"shelf_love",page:27,ingredients:["haricots blancs","tahin","herbes","huile pimentée"]},
+  {name:"Parathas au zaatar et pulpe de tomate",book:"shelf_love",page:28,ingredients:["farine","zaatar","tomates"]},
+  {name:"Frites de pois chiches et polenta au chaat masala",book:"shelf_love",page:32,ingredients:["pois chiches","polenta","chaat masala","mayonnaise végane"]},
+  {name:"Purée de pois cassés jaunes, oignons au beurre et salsa aux câpres",book:"shelf_love",page:34,ingredients:["pois cassés","oignons","câpres","beurre"]},
+  {name:"Porridge d'avoine et croustillant de gingembre et d'ail",book:"shelf_love",page:36,ingredients:["avoine","gingembre","ail"]},
+  {name:"Blettes et haricots mungo au tamarin et à l'huile de curcuma",book:"shelf_love",page:38,ingredients:["blettes","haricots mungo","tamarin","curcuma"]},
+  {name:"Soda bread aux figues, à l'anis étoilé et à l'orange",book:"shelf_love",page:41,ingredients:["figues","anis étoilé","orange","farine"]},
+  {name:"Riz au yaourt, chana dal et huile aux feuilles de curry",book:"shelf_love",page:42,ingredients:["riz","yaourt","dal","feuilles de curry"]},
+  {name:"Nouilles biang biang d'Ixta",book:"shelf_love",page:44,ingredients:["nouilles","sauce soja","piments","ail","vinaigre"]},
+  {name:"Galette de couscous super-géante",book:"shelf_love",page:48,ingredients:["couscous","épinards","poivrons","fromage","sauce aux poivrons"]},
+  {name:"Brochettes de bœuf au citron noir séché et oignons au sumac",book:"shelf_love",page:52,ingredients:["bœuf","citron noir","sumac","oignons","naans"]},
+  {name:"Feta en croûte de sésame et sirop de miel au citron noir",book:"shelf_love",page:54,ingredients:["feta","sésame","miel","citron noir"]},
+  {name:"Galettes de boulghour et sauce express au piment",book:"shelf_love",page:56,ingredients:["boulgour","épinards","galettes","piment"]},
+  {name:"Semoule épicée et maïs doux aux cacahuètes et à la coriandre",book:"shelf_love",page:59,ingredients:["semoule","maïs","cacahuètes","coriandre"]},
+  {name:"Bagna cauda aux herbes",book:"shelf_love",page:64,ingredients:["anchois","beurre","herbes","crudités","radis","asperges"]},
+  {name:"Salade de tomates pas comme les autres",book:"shelf_love",page:67,ingredients:["tomates"]},
+  {name:"Écrasé de carottes, oignons marinés et pesto de coriandre-pistaches",book:"shelf_love",page:68,ingredients:["carottes","oignons","pistaches","coriandre"]},
+  {name:"Boulettes aux herbes (beaucoup !) et oignons caramélisés",book:"shelf_love",page:70,ingredients:["viande","herbes","oignons","fromage"]},
+  {name:"Purée d'aubergines aux épices et petits pois aux herbes",book:"shelf_love",page:72,ingredients:["aubergines","petits pois","herbes","épices"]},
+  {name:"Courgettes grillées, sauce chaude au yaourt et beurre au safran",book:"shelf_love",page:75,ingredients:["courgettes","yaourt","safran","beurre"]},
+  {name:"Salade de poivrons grillés, concombre et fines herbes",book:"shelf_love",page:76,ingredients:["poivrons","concombre","herbes"]},
+  {name:"Pommes de terre rôties, aïoli et pignons sautés au beurre",book:"shelf_love",page:78,ingredients:["pommes de terre","aïoli","pignons","beurre"]},
+  {name:"Courgettes, tomates et ricotta",book:"shelf_love",page:81,ingredients:["courgettes","tomates","ricotta","salsa de tomates"]},
+  {name:"Aubergines grillées, sauce tomate et tahini",book:"shelf_love",page:83,ingredients:["aubergines","tomates","tahin"]},
+  {name:"Chachouka de patate douce, beurre au sriracha et pickles d'oignons",book:"shelf_love",page:84,ingredients:["patate douce","sriracha","œufs","oignons marinés"]},
+  {name:"Pain grillé aux tomates et à l'ail frit",book:"shelf_love",page:86,ingredients:["pain","tomates","ail"]},
+  {name:"Courge musquée, huile infusée à l'orange et miel brûlé",book:"shelf_love",page:91,ingredients:["courge","orange","miel","fromage"]},
+  {name:"Coleslaw au citron vert, graines de pavot et huile aux feuilles de curry",book:"shelf_love",page:92,ingredients:["chou","citron vert","pavot","feuilles de curry","noix de cajou"]},
+  {name:"Panais confits grillés aux herbes et au vinaigre",book:"shelf_love",page:96,ingredients:["panais","herbes","vinaigre"]},
+  {name:"Salade de choux de Bruxelles et parmesan, vinaigrette au citron",book:"shelf_love",page:99,ingredients:["choux de Bruxelles","parmesan","citron"]},
+  // PLATS PRINCIPAUX
+  {name:"Pois chiches confits aux épices tandoori",book:"shelf_love",page:105,ingredients:["pois chiches","épices tandoori"]},
+  {name:"Toad-in-the-hole riche en légumes",book:"shelf_love",page:106,ingredients:["légumes","betterave","céleri-rave","rutabaga","sauce aux champignons"]},
+  {name:"Vindaloo de porc aux épices",book:"shelf_love",page:110,ingredients:["porc","épices","curry","vinaigre"]},
+  {name:"Orzo puttanesca au four",book:"shelf_love",page:114,ingredients:["orzo","tomates","olives","câpres","thon","anchois"]},
+  {name:"Poulet, carottes et pois chiches au berbéré",book:"shelf_love",page:117,ingredients:["poulet","carottes","pois chiches","berbéré"]},
+  {name:"Saumon au zaatar et au tahini",book:"shelf_love",page:119,ingredients:["saumon","zaatar","tahin","épinards"]},
+  {name:"Pois chiches cacio e pepe",book:"shelf_love",page:120,ingredients:["pois chiches","poivre","parmesan","pecorino"]},
+  {name:"Cocotte de spaghettis croustillants et poulet",book:"shelf_love",page:122,ingredients:["spaghettis","poulet"]},
+  {name:"Travers de bœuf braisés aux haricots et aux figues",book:"shelf_love",page:124,ingredients:["bœuf","haricots blancs","figues"]},
+  {name:"Pilaf de riz aux champignons et épices douces",book:"shelf_love",page:127,ingredients:["riz","champignons","épices","abricot"]},
+  {name:"Tomates, oignons et poivrons rôtis à la feta et aux pignons de pin",book:"shelf_love",page:128,ingredients:["tomates","oignons","poivrons","feta","pignons","harissa"]},
+  {name:"Prunes et saucisses en sauce aigre-douce",book:"shelf_love",page:131,ingredients:["saucisses","prunes","anis étoilé","pommes de terre"]},
+  {name:"Mac and cheese revisité, pesto au zaatar",book:"shelf_love",page:140,ingredients:["pâtes","fromage","zaatar","pesto"]},
+  {name:"Soupe magique au poulet, au parmesan et aux pappardelle",book:"shelf_love",page:143,ingredients:["poulet","pappardelle","parmesan"]},
+  {name:"Riz de fête à l'agneau et au poulet, yaourt à l'ail",book:"shelf_love",page:144,ingredients:["riz","agneau","poulet","yaourt","ail"]},
+  {name:"Pâtes à la crème d'aubergines grillées-fumées, sauce au tahini",book:"shelf_love",page:146,ingredients:["pâtes","aubergines","tahin"]},
+  {name:"Keftas de poisson, sauce tomate aux piments ancho",book:"shelf_love",page:149,ingredients:["poisson","tomates","piments ancho"]},
+  {name:"Feta fumée marinée",book:"shelf_love",page:150,ingredients:["feta","épices","huile"]},
+  {name:"Riz frit à la méditerranéenne, sauce aux anchois et au citron",book:"shelf_love",page:153,ingredients:["riz","anchois","citron","œufs"]},
+  {name:"Pain de tomates-courgettes et chutney de tomates aux épices",book:"shelf_love",page:154,ingredients:["tomates","courgettes","fromage","épices"]},
+  {name:"Keftas de bœuf et riz, sauce tomate aux épices",book:"shelf_love",page:156,ingredients:["bœuf","riz","tomates","épices"]},
+  {name:"Gratin de chou et de pommes de terre aux herbes, au gruyère et à la ricotta",book:"shelf_love",page:158,ingredients:["chou","pommes de terre","gruyère","ricotta","herbes"]},
+  {name:"Écrasé de butternut aux épices et pancakes-omelettes (pomlettes)",book:"shelf_love",page:163,ingredients:["butternut","œufs","épices"]},
+  {name:"Salade à la russe revisitée",book:"shelf_love",page:165,ingredients:["pommes de terre","légumes","mayonnaise","œufs"]},
+  {name:"Assortiment de légumes grillés, sauce moutarde-parmesan",book:"shelf_love",page:166,ingredients:["légumes","moutarde","parmesan"]},
+  {name:"Crème de tomate, oignons au beurre et orecchiette",book:"shelf_love",page:169,ingredients:["tomates","oignons","orecchiette","beurre"]},
+  {name:"Gnocchis, oignons au sumac et pignons de pin au beurre brun",book:"shelf_love",page:170,ingredients:["gnocchis","oignons","sumac","pignons","beurre brun","ail"]},
+  {name:"Tourte de chou-fleur au fromage et au curry",book:"shelf_love",page:179,ingredients:["chou-fleur","fromage","curry","pâte filo"]},
+  {name:"Petits pois, tahini et zaatar",book:"shelf_love",page:182,ingredients:["petits pois","tahin","zaatar"]},
+  {name:"Salade Cobb, sauce mangue-citron vert",book:"shelf_love",page:184,ingredients:["poulet","laitue","maïs","crevettes","avocat","asperges","mangue","citron vert"]},
+  {name:"Haricots verts braisés à la tomate, à la cardamome et à l'ail",book:"shelf_love",page:188,ingredients:["haricots verts","tomates","cardamome","ail"]},
+  {name:"Toum pour tuer les vampires",book:"shelf_love",page:190,ingredients:["ail","huile","citron"]},
+  {name:"Poisson pané au sarrasin, toum et piments marinés",book:"shelf_love",page:193,ingredients:["poisson","sarrasin","toum","piments"]},
+  {name:"Salade de fèves et d'herbes au toum",book:"shelf_love",page:195,ingredients:["fèves","herbes","toum","laitue"]},
+  {name:"Beignets de légumes (mélange tout prêt) et pommes de terre à la harissa",book:"shelf_love",page:196,ingredients:["légumes","pommes de terre","harissa"]},
+  {name:"Poivrons farcis à la purée de maïs et jalapeños marinés",book:"shelf_love",page:199,ingredients:["poivrons","maïs","jalapeños","fromage"]},
+  {name:"Tarte aux herbes, aux pommes de terre et à la chermoula",book:"shelf_love",page:200,ingredients:["pommes de terre","herbes","chermoula","épinards","pâte","tahin"]},
+  {name:"Strata au pesto de chou kale, gruyère et moutarde",book:"shelf_love",page:136,ingredients:["pain","kale","gruyère","moutarde","pesto","œufs"]},
+  // DESSERTS
+  {name:"Crumble de fruits rouges et croûtons au beurre brun",book:"shelf_love",page:204,ingredients:["fruits rouges","avoine","beurre brun","croûtons"]},
+  {name:"Faloudeh",book:"shelf_love",page:214,ingredients:["vermicelles de riz","grenade","eau de rose"]},
+  {name:"Gâteau de rêve à la noix de coco",book:"shelf_love",page:216,ingredients:["noix de coco","cream cheese","citron"]},
+  {name:"Pudding renversé citron-vanille, beurre au citron et au sirop d'érable",book:"shelf_love",page:218,ingredients:["citron","vanille","sirop d'érable","beurre"]},
+  {name:"Fruits rouges glacés pour les petits",book:"shelf_love",page:222,ingredients:["fruits rouges","framboises","chocolat"]},
+  {name:"Biscuits de voyage de Verena",book:"shelf_love",page:224,ingredients:["avoine","raisins secs","noix de pécan"]},
+  {name:"Chocoflan",book:"shelf_love",page:226,ingredients:["chocolat","caramel","cream cheese","œufs"]},
+  {name:"Mouhalabieh au sirop d'orange et miel brûlé, kataifi et sucre de pistache",book:"shelf_love",page:230,ingredients:["lait","kataifi","pistaches","orange","miel"]},
+  {name:"Stromboli aux fruits et au fromage",book:"shelf_love",page:232,ingredients:["pêches","myrtilles","fromage","ricotta","pâte"]},
+  {name:"Biscuit aux amandes, baies d'épine-vinette, orange et piment d'Alep",book:"shelf_love",page:236,ingredients:["amandes","baies d'épine-vinette","orange","piment d'Alep","chocolat"]},
+  {name:"Bananes collantes au miso, citron vert et riz grillé",book:"shelf_love",page:240,ingredients:["bananes","miso","citron vert","riz","anis étoilé"]},
+  {name:"Carrot cake en version macarons",book:"shelf_love",page:212,ingredients:["carottes","noix de pécan","cream cheese","épices"]},
+];
+
+let selectedBooks=new Set(JSON.parse(localStorage.getItem('ottolengh_books')||'[]'));
+let favorites=new Set(JSON.parse(localStorage.getItem('ottolengh_favs')||'[]'));
+let activeIngredients=[];
+
+renderBooks();updateBookCount();
+
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+
+function renderBooks(){
+  document.getElementById('books-grid').innerHTML=BOOKS.map(b=>`
+    <div class="book-card ${selectedBooks.has(b.id)?'selected':''}" onclick="toggleBook('${b.id}')">
+      <div class="check">✓</div>
+      <div class="spine" style="background:${b.color}"></div>
+      <h3>${b.title}</h3>
+      <div class="year">${b.year} · ${b.subtitle}</div>
+      ${b.indexed?'<div class="badge">indexé</div>':''}
+    </div>`).join('');
+}
+
+function toggleBook(id){
+  selectedBooks.has(id)?selectedBooks.delete(id):selectedBooks.add(id);
+  localStorage.setItem('ottolengh_books',JSON.stringify([...selectedBooks]));
+  renderBooks();updateBookCount();
+}
+
+function toggleFav(key,event){
+  event.stopPropagation();
+  favorites.has(key)?favorites.delete(key):favorites.add(key);
+  localStorage.setItem('ottolengh_favs',JSON.stringify([...favorites]));
+  searchRecipes();
+}
+
+function updateBookCount(){
+  const n=selectedBooks.size;
+  const r=RECIPES.filter(r=>n===0||selectedBooks.has(r.book)).length;
+  document.getElementById('books-count').innerHTML=n===0
+    ?'Aucun livre sélectionné — choisissez ceux que vous possédez pour activer la recherche.'
+    :`<strong>${n} livre${n>1?'s':''}</strong> sélectionné${n>1?'s':''} — <strong>${r} recettes</strong> disponibles à la recherche.`;
+}
+
+function addIngredient(){
+  const input=document.getElementById('ingredient-input');
+  const val=input.value.trim().toLowerCase();
+  if(!val||activeIngredients.includes(val)){input.value='';return;}
+  activeIngredients.push(val);input.value='';
+  renderTags();searchRecipes();
+}
+
+function removeIngredient(ing){
+  activeIngredients=activeIngredients.filter(i=>i!==ing);
+  renderTags();
+  if(activeIngredients.length>0)searchRecipes();
+  else{document.getElementById('results-area').innerHTML='';document.getElementById('suggest-section').style.display='none';}
+}
+
+function renderTags(){
+  document.getElementById('ingredient-tags').innerHTML=activeIngredients.map(i=>`
+    <div class="tag">${i}<button onclick="removeIngredient('${i}')">×</button></div>`).join('');
+}
+
+let currentMode = 'list';
+let swipeResults = [];
+let swipeIndex = 0;
+let swipeYes = [];
+let dragState = null;
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-list').classList.toggle('active', mode === 'list');
+  document.getElementById('btn-swipe').classList.toggle('active', mode === 'swipe');
+  renderCurrentMode();
+}
+
+function searchRecipes(){
+  if(activeIngredients.length===0)return;
+  const pool=selectedBooks.size>0?RECIPES.filter(r=>selectedBooks.has(r.book)):RECIPES;
+  const scored=pool.map(r=>{
+    const key=r.book+'|'+r.page;
+    const matches=activeIngredients.filter(i=>
+      r.ingredients.some(ri=>ri.toLowerCase().includes(i)||i.includes(ri.toLowerCase()))||
+      r.name.toLowerCase().includes(i)
+    );
+    return{...r,matches,score:matches.length,key,isFav:favorites.has(key)};
+  }).filter(r=>r.score>0).sort((a,b)=>{
+    if(a.isFav!==b.isFav)return a.isFav?-1:1;
+    return b.score-a.score;
+  });
+
+  swipeResults = scored;
+  swipeIndex = 0;
+  swipeYes = [];
+
+  const toggle = document.getElementById('mode-toggle');
+  toggle.style.display = scored.length > 0 ? 'flex' : 'none';
+
+  // Keep results-area for empty state only
+  document.getElementById('results-area').innerHTML = '';
+  renderCurrentMode();
+  renderSuggestions(scored);
+}
+
+function renderCurrentMode() {
+  if (currentMode === 'list') renderList();
+  else renderSwipe();
+}
+
+function renderList() {
+  const bookMap=Object.fromEntries(BOOKS.map(b=>[b.id,b.title]));
+  const area = document.getElementById('mode-content');
+  if(swipeResults.length===0){
+    area.innerHTML=`<div class="empty-state"><div class="icon">🫙</div><p>Aucune recette trouvée avec ces ingrédients.<br>Essayez d'autres ingrédients ou sélectionnez d'autres livres.</p></div>`;
+    return;
+  }
+  area.innerHTML=`
+    <div class="results-meta"><strong>${swipeResults.length} recette${swipeResults.length>1?'s':''}</strong> correspond${swipeResults.length>1?'ent':''} à vos ingrédients</div>
+    <div class="recipe-list">${swipeResults.map(r=>`
+      <div class="recipe-card ${r.isFav?'is-fav':''}">
+        <div style="flex:1">
+          <h3>${r.name}</h3>
+          <div class="match-dots">
+            ${activeIngredients.map(i=>`<div class="match-dot ${r.matches.includes(i)?'lit':''}"></div>`).join('')}
+            <span class="match-label">${r.matches.join(', ')}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem">
+          <button class="fav-btn ${r.isFav?'active':''}" onclick="toggleFav('${r.key}',event)" title="${r.isFav?'Retirer des favoris':'Ajouter aux favoris'}">${r.isFav?'♥':'♡'}</button>
+          <div class="page-badge">
+            <span class="book-name">${bookMap[r.book]||r.book}</span>
+            <span class="page-num">${r.page}</span>
+            <span class="page-label">page</span>
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+}
+
+function renderSwipe() {
+  const area = document.getElementById('mode-content');
+  if(swipeResults.length===0){
+    area.innerHTML=`<div class="empty-state"><div class="icon">🫙</div><p>Aucune recette trouvée.</p></div>`;
+    return;
+  }
+  if(swipeIndex >= swipeResults.length){
+    renderSwipeDone(area);
+    return;
+  }
+  const bookMap=Object.fromEntries(BOOKS.map(b=>[b.id,b.title]));
+  const r = swipeResults[swipeIndex];
+  const next = swipeResults[swipeIndex+1];
+
+  const cardHTML = (recipe, isActive) => {
+    const key = recipe.book+'|'+recipe.page;
+    const idAttr = isActive ? 'id="swipe-top"' : '';
+    const style = isActive
+      ? 'z-index:2;transform:scale(1);'
+      : 'z-index:1;transform:scale(0.95);pointer-events:none;filter:blur(1px);';
+    return `<div class="swipe-card" ${idAttr} style="${style}" data-key="${key}">
+      <div class="swipe-verdict yes">Oui ✓</div>
+      <div class="swipe-verdict no">Non ✗</div>
+      <h2>${recipe.name}</h2>
+      <div class="swipe-dots">${activeIngredients.map(i=>`<div class="swipe-dot ${recipe.matches.includes(i)?'lit':''}"></div>`).join('')}</div>
+      <div class="swipe-meta">
+        <div class="swipe-book">${bookMap[recipe.book]||recipe.book}</div>
+        <div class="swipe-page">${recipe.page}<small>page</small></div>
+      </div>
+    </div>`;
+  };
+
+  area.innerHTML = `
+    <div class="swipe-stack-hint">${swipeResults.length - swipeIndex} recette${swipeResults.length-swipeIndex>1?'s':''} à parcourir</div>
+    <div class="swipe-arena" id="swipe-arena">
+      ${next ? cardHTML(next, false) : ''}
+      ${cardHTML(r, true)}
+    </div>
+    <div class="swipe-buttons">
+      <button class="swipe-btn no" onclick="doSwipe('left')" title="Passer">✕</button>
+      <button class="swipe-btn fav" onclick="swipeFav()" title="Favori">${favorites.has(r.book+'|'+r.page)?'♥':'♡'}</button>
+      <button class="swipe-btn yes" onclick="doSwipe('right')" title="Garder">✓</button>
+    </div>`;
+
+  attachDrag();
+}
+
+function renderSwipeDone(area) {
+  const bookMap=Object.fromEntries(BOOKS.map(b=>[b.id,b.title]));
+  const listHTML = swipeYes.length === 0
+    ? `<p style="font-size:0.85rem;color:var(--muted)">Aucune recette sélectionnée.</p>`
+    : `<div class="recipe-list swipe-yes-list">${swipeYes.map(r=>`
+        <div class="recipe-card ${favorites.has(r.key)?'is-fav':''}">
+          <div style="flex:1">
+            <h3>${r.name}</h3>
+            <div class="match-dots">${activeIngredients.map(i=>`<div class="match-dot ${r.matches.includes(i)?'lit':''}"></div>`).join('')}<span class="match-label">${r.matches.join(', ')}</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem">
+            <button class="fav-btn ${favorites.has(r.key)?'active':''}" onclick="toggleFav('${r.key}',event)">${favorites.has(r.key)?'♥':'♡'}</button>
+            <div class="page-badge"><span class="book-name">${bookMap[r.book]||r.book}</span><span class="page-num">${r.page}</span><span class="page-label">page</span></div>
+          </div>
+        </div>`).join('')}</div>`;
+
+  area.innerHTML = `
+    <div class="swipe-done">
+      <div class="icon">🍽️</div>
+      <h3>C'est tout !</h3>
+      <p>${swipeYes.length} recette${swipeYes.length>1?'s':''} retenue${swipeYes.length>1?'s':''}${swipeYes.length===0?'':' — repassez en mode liste pour les retrouver toutes.'}</p>
+      <button class="btn btn-outline" style="margin-top:1rem" onclick="swipeIndex=0;swipeYes=[];renderSwipe()">Recommencer</button>
+    </div>
+    ${listHTML}`;
+}
+
+function doSwipe(dir) {
+  const card = document.getElementById('swipe-top');
+  if(!card) return;
+  const r = swipeResults[swipeIndex];
+  if(dir === 'right') {
+    swipeYes.push(r);
+    card.classList.add('swipe-right');
+  } else {
+    card.classList.add('swipe-left');
+  }
+  card.addEventListener('animationend', () => {
+    swipeIndex++;
+    renderSwipe();
+  }, {once:true});
+}
+
+function swipeFav() {
+  const r = swipeResults[swipeIndex];
+  if(!r) return;
+  const key = r.book+'|'+r.page;
+  favorites.has(key)?favorites.delete(key):favorites.add(key);
+  localStorage.setItem('ottolengh_favs',JSON.stringify([...favorites]));
+  // update heart button only
+  const btn = document.querySelector('.swipe-btn.fav');
+  if(btn) btn.textContent = favorites.has(key)?'♥':'♡';
+}
+
+function attachDrag() {
+  const card = document.getElementById('swipe-top');
+  if(!card) return;
+  let startX=0, startY=0, currentX=0;
+  const yesVerdict = card.querySelector('.swipe-verdict.yes');
+  const noVerdict = card.querySelector('.swipe-verdict.no');
+
+  const onMove = (x, y) => {
+    const dx = x - startX;
+    const rot = dx * 0.08;
+    card.style.transform = `translateX(${dx}px) rotate(${rot}deg)`;
+    card.classList.add('is-dragging');
+    const ratio = Math.min(Math.abs(dx) / 80, 1);
+    if(dx > 20) { yesVerdict.style.opacity=ratio; noVerdict.style.opacity=0; }
+    else if(dx < -20) { noVerdict.style.opacity=ratio; yesVerdict.style.opacity=0; }
+    else { yesVerdict.style.opacity=0; noVerdict.style.opacity=0; }
+    currentX = dx;
+  };
+
+  const onEnd = () => {
+    card.classList.remove('is-dragging');
+    if(currentX > 80) doSwipe('right');
+    else if(currentX < -80) doSwipe('left');
+    else { card.style.transform=''; yesVerdict.style.opacity=0; noVerdict.style.opacity=0; }
+  };
+
+  card.addEventListener('mousedown', e => { startX=e.clientX; startY=e.clientY; currentX=0;
+    const mm = e2 => onMove(e2.clientX, e2.clientY);
+    const mu = () => { onEnd(); window.removeEventListener('mousemove',mm); window.removeEventListener('mouseup',mu); };
+    window.addEventListener('mousemove',mm); window.addEventListener('mouseup',mu);
+  });
+  card.addEventListener('touchstart', e => { startX=e.touches[0].clientX; currentX=0; }, {passive:true});
+  card.addEventListener('touchmove', e => { onMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+  card.addEventListener('touchend', onEnd);
+}
+
+function renderSuggestions(results){
+  const section=document.getElementById('suggest-section');
+  const chips=document.getElementById('suggest-chips');
+  const used=new Set(results.flatMap(r=>r.ingredients));
+  const candidates=[...used].filter(i=>!activeIngredients.some(a=>i.toLowerCase().includes(a)||a.includes(i.toLowerCase()))).slice(0,12);
+  if(candidates.length===0){section.style.display='none';return;}
+  section.style.display='block';
+  chips.innerHTML=candidates.map(c=>`<button class="suggest-chip" onclick="addSuggestion('${c}')">+ ${c}</button>`).join('');
+}
+
+function addSuggestion(ing){
+  if(!activeIngredients.includes(ing)){activeIngredients.push(ing);renderTags();searchRecipes();}
+}
+
+function handleFridgePhoto(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  const preview=document.getElementById('preview-img');
+  preview.src=URL.createObjectURL(file);
+  preview.style.display='block';
+  analyzeFridgePhoto(file);
+}
+
+async function analyzeFridgePhoto(file){
+  const resultsDiv=document.getElementById('fridge-results');
+  resultsDiv.innerHTML=`<div class="loading"><div class="spinner"></div>Identification des aliments dans votre frigo…</div>`;
+  const base64=await fileToBase64(file);
+  const mediaType=file.type||'image/jpeg';
+  const pool=selectedBooks.size>0?RECIPES.filter(r=>selectedBooks.has(r.book)):RECIPES;
+  const selectedBookNames=selectedBooks.size>0?BOOKS.filter(b=>selectedBooks.has(b.id)).map(b=>b.title).join(', '):'tous les livres Ottolenghi';
+  try{
+    const response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`Tu es un assistant culinaire pour une application de recettes Ottolenghi en français. Identifie tous les légumes, fruits, herbes et produits frais visibles. Suggère les meilleures recettes depuis cette base : ${JSON.stringify(pool.map(r=>({name:r.name,book:r.book,page:r.page,ingredients:r.ingredients})))}. Réponds UNIQUEMENT avec du JSON valide : { "identified": ["item1","item2",...], "recipes": [{"name":"...","book":"...","page":123,"matchedIngredients":["..."]}] }. Maximum 6 recettes. Aucun texte supplémentaire.`,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+          {type:'text',text:`Identifie tous les aliments dans ce frigo et suggère des recettes Ottolenghi de ma bibliothèque (${selectedBookNames}). JSON uniquement.`}
+        ]}]
+      })
+    });
+    const data=await response.json();
+    const raw=data.content?.find(c=>c.type==='text')?.text||'';
+    const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    renderFridgeResults(parsed);
+  }catch(err){
+    resultsDiv.innerHTML=`<div class="empty-state"><div class="icon">⚠️</div><p>Impossible d'analyser la photo. Veuillez réessayer.<br><small>${err.message}</small></p></div>`;
+  }
+}
+
+function renderFridgeResults(data){
+  const div=document.getElementById('fridge-results');
+  const bookMap=Object.fromEntries(BOOKS.map(b=>[b.id,b.title]));
+  const vegeHTML=(data.identified||[]).map(v=>`<div class="vege-tag">${v}</div>`).join('');
+  const recipesHTML=(data.recipes||[]).length===0
+    ?`<div class="empty-state"><p>Aucune recette correspondante trouvée.</p></div>`
+    :(data.recipes||[]).map(r=>{
+      const key=r.book+'|'+r.page;
+      const isFav=favorites.has(key);
+      return`<div class="recipe-card">
+        <div style="flex:1">
+          <h3>${r.name}</h3>
+          <div class="match-dots">
+            ${(r.matchedIngredients||[]).map(()=>`<div class="match-dot lit"></div>`).join('')}
+            <span class="match-label">${(r.matchedIngredients||[]).join(', ')}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem">
+          <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${key}',event)">${isFav?'♥':'♡'}</button>
+          <div class="page-badge">
+            <span class="book-name">${bookMap[r.book]||r.book}</span>
+            <span class="page-num">${r.page}</span>
+            <span class="page-label">page</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  div.innerHTML=`
+    <div class="divider">Aliments identifiés</div>
+    <div class="vege-tags">${vegeHTML||'<span style="color:var(--muted);font-size:0.85rem">Aucun aliment détecté</span>'}</div>
+    <div class="divider">Recettes suggérées</div>
+    <div class="recipe-list">${recipesHTML}</div>
+    <div class="info-note"><strong>Astuce :</strong> Ajoutez ces ingrédients dans l'onglet Recherche pour explorer davantage de combinaisons.</div>`;
+}
+
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r=new FileReader();
+    r.onload=()=>resolve(r.result.split(',')[1]);
+    r.onerror=()=>reject(new Error('Échec de lecture'));
+    r.readAsDataURL(file);
+  });
+}
+</script>
+</body>
+</html>
